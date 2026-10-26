@@ -1,0 +1,2874 @@
+/**
+ * Theme Lab
+ *
+ * Admin interface styles.
+ *
+ * @package ThemeLab
+ * @version 1.0.1
+ */
+
+.themelab_palette_grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	gap: 16px;
+}
+
+.themelab_palette_card {
+	position: relative;
+	display: block;
+	box-sizing: border-box;
+	min-height: 205px;
+	padding: 16px;
+	border: 2px solid #d2d6da;
+	border-radius: 7px;
+	background: #fff;
+	cursor: pointer;
+	transition:
+		border-color 0.15s ease,
+		box-shadow 0.15s ease,
+		transform 0.15s ease;
+}
+
+.themelab_palette_card:hover {
+	border-color: #5588aa;
+	box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+	transform: translateY(-2px);
+}
+
+.themelab_palette_card.is_selected {
+	border-color: #2f7db2;
+	box-shadow: 0 0 0 2px rgba(47, 125, 178, 0.18);
+}
+
+.themelab_palette_card input[type="radio"] {
+	margin-right: 6px;
+}
+
+.themelab_palette_card_header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+	margin-bottom: 12px;
+}
+
+.themelab_palette_card_title {
+	display: flex;
+	align-items: center;
+}
+
+.themelab_palette_selected_badge {
+	display: none;
+	padding: 3px 7px;
+	border-radius: 10px;
+	background: #2f7d32;
+	color: #fff;
+	font-size: 0.8em;
+	font-weight: bold;
+}
+
+.themelab_palette_card.is_selected .themelab_palette_selected_badge {
+	display: inline-block;
+}
+
+.themelab_palette_swatches {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 5px;
+	margin-bottom: 12px;
+}
+
+.themelab_palette_swatch {
+	display: block;
+	width: 32px;
+	height: 32px;
+	box-sizing: border-box;
+	border: 1px solid rgba(0, 0, 0, 0.35);
+	border-radius: 3px;
+}
+
+.themelab_palette_description {
+	min-height: 48px;
+	margin-bottom: 14px;
+}
+
+.themelab_palette_action {
+	margin-top: auto;
+	text-align: right;
+}
+
+.themelab_palette_card .button {
+	position: relative;
+	z-index: 2;
+}
+
+.themelab_current_palette_grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	gap: 12px;
+}
+
+.themelab_token_card {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding: 11px;
+	border: 1px solid #c9cdd1;
+	border-radius: 5px;
+	background: rgba(255, 255, 255, 0.45);
+}
+
+.themelab_token_swatch {
+	display: block;
+	flex: 0 0 46px;
+	width: 46px;
+	height: 46px;
+	box-sizing: border-box;
+	border: 1px solid rgba(0, 0, 0, 0.4);
+	border-radius: 4px;
+}
+
+.themelab_token_value {
+	margin-top: 3px;
+}
+
+.themelab_palette_section {
+	margin-top: 16px;
+}
+
+.themelab_color_editor_grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+	gap: 14px;
+}
+
+.themelab_color_editor {
+	box-sizing: border-box;
+	padding: 14px;
+	border: 1px solid #c9cdd1;
+	border-radius: 6px;
+	background: rgba(255, 255, 255, 0.45);
+}
+
+.themelab_color_editor.is_customized {
+	border-color: #2f7db2;
+	box-shadow: inset 4px 0 0 #2f7db2;
+}
+
+.themelab_color_editor_heading {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 8px;
+	margin-bottom: 10px;
+}
+
+.themelab_custom_badge {
+	padding: 3px 7px;
+	border-radius: 10px;
+	background: #2f7db2;
+	color: #fff;
+	font-size: 0.78em;
+	font-weight: bold;
+}
+
+.themelab_color_controls {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.themelab_color_picker {
+	width: 54px;
+	height: 42px;
+	padding: 1px;
+	border: 1px solid #999;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.themelab_color_hex {
+	box-sizing: border-box;
+	width: 105px;
+	font-family: monospace;
+	text-transform: uppercase;
+}
+
+.themelab_palette_form_actions {
+	display: flex;
+	justify-content: flex-end;
+	gap: 10px;
+	margin: 0 !important;
+	padding-top: 0 !important;
+}
+
+/* Layout Studio */
+
+.themelab_layout_grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 16px;
+}
+
+.themelab_layout_panel {
+	box-sizing: border-box;
+	padding: 16px;
+	border: 1px solid #c9cdd1;
+	border-radius: 6px;
+	background: rgba(255, 255, 255, 0.45);
+}
+
+.themelab_layout_panel h4 {
+	margin: 0 0 8px;
+	font-size: 1.1em;
+}
+
+.themelab_layout_panel_wide {
+	grid-column: 1 / -1;
+}
+
+.themelab_choice_group {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 18px;
+	margin: 14px 0;
+}
+
+.themelab_field_label {
+	display: block;
+	margin: 14px 0 6px;
+	font-weight: bold;
+}
+
+.themelab_number_control {
+	display: flex;
+	align-items: center;
+	gap: 7px;
+}
+
+.themelab_number_control input[type="number"] {
+	width: 105px;
+}
+
+.themelab_choice_cards {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	gap: 8px;
+	margin-top: 14px;
+}
+
+.themelab_choice_card {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	box-sizing: border-box;
+	width: 100%;
+	min-width: 0;
+	padding: 12px;
+	border: 1px solid #c9cdd1;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.themelab_choice_card input {
+	flex: 0 0 auto;
+}
+
+.themelab_choice_card span {
+	min-width: 0;
+}
+
+.themelab_choice_card:hover {
+	border-color: #5588aa;
+}
+
+.themelab_choice_card:has(input:checked) {
+	border-color: #2f7db2;
+	box-shadow: 0 0 0 2px rgba(47, 125, 178, 0.15);
+}
+
+.themelab_toggle_row {
+	display: flex;
+	align-items: flex-start;
+	gap: 10px;
+	cursor: pointer;
+}
+
+.themelab_toggle_row input {
+	margin-top: 3px;
+}
+
+.themelab_layout_actions {
+	display: flex;
+	justify-content: space-between;
+	gap: 10px;
+	margin-top: 0;
+}
+
+@media (max-width: 800px) {
+	.themelab_layout_grid {
+		grid-template-columns: 1fr;
+	}
+
+	.themelab_layout_panel_wide {
+		grid-column: auto;
+	}
+
+	.themelab_choice_cards {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* Typography Studio */
+
+.themelab_typography_layout {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(500px, 1fr);
+	gap: 18px;
+}
+
+.themelab_typography_controls {
+	display: grid;
+	gap: 16px;
+}
+
+.themelab_typography_panel {
+	box-sizing: border-box;
+	padding: 16px;
+	border: 1px solid #c9cdd1;
+	border-radius: 6px;
+	background: rgba(255, 255, 255, 0.45);
+}
+
+.themelab_typography_panel h4 {
+	margin: 0 0 8px;
+	font-size: 1.1em;
+}
+
+.themelab_font_grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+	gap: 10px;
+	margin-top: 14px;
+}
+
+.themelab_font_card {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	box-sizing: border-box;
+	min-height: 112px;
+	padding: 12px;
+	border: 2px solid #c9cdd1;
+	border-radius: 6px;
+	cursor: pointer;
+}
+
+.themelab_font_card:hover,
+.themelab_font_card.is_selected {
+	border-color: #2f7db2;
+}
+
+.themelab_font_card.is_selected {
+	box-shadow: 0 0 0 2px rgba(47, 125, 178, 0.15);
+}
+
+.themelab_font_card input {
+	align-self: flex-start;
+}
+
+.themelab_font_sample {
+	font-size: 2em;
+	line-height: 1;
+}
+
+.themelab_heading_weight_grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 10px;
+	margin-top: 12px;
+}
+
+.themelab_weight_card {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 12px;
+	border: 1px solid #c9cdd1;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.themelab_weight_card:hover {
+	border-color: #5588aa;
+}
+
+.themelab_typography_preview_wrap {
+	position: relative;
+}
+
+.themelab_typography_preview_label {
+	padding: 8px 12px;
+	border-radius: 6px 6px 0 0;
+	background: #e5e9ec;
+	font-weight: bold;
+}
+
+.themelab_typography_preview {
+	position: sticky;
+	top: 12px;
+	box-sizing: border-box;
+	min-height: 360px;
+	padding: 22px;
+	border: 1px solid #c9cdd1;
+	border-top: 0;
+	border-radius: 0 0 6px 6px;
+	background: #fff;
+}
+
+.themelab_typography_preview h2 {
+	margin-top: 0;
+}
+
+.themelab_typography_preview code {
+	display: block;
+	margin-top: 18px;
+	padding: 12px;
+	border: 1px solid #d2d6da;
+	border-radius: 4px;
+	background: #f3f5f7;
+}
+
+@media (max-width: 900px) {
+	.themelab_typography_layout {
+		grid-template-columns: 1fr;
+	}
+
+	.themelab_typography_preview {
+		position: static;
+	}
+
+	.themelab_heading_weight_grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* Shared mini-forum preview */
+
+.themelab_preview_column {
+	position: sticky;
+	top: 12px;
+	align-self: start;
+	min-width: 0;
+}
+
+.themelab_preview_title {
+	padding: 9px 12px;
+	border-radius: 6px 6px 0 0;
+	background: #e5e9ec;
+	font-weight: bold;
+}
+
+.themelab_mini_forum {
+	overflow: hidden;
+	box-sizing: border-box;
+	border: 1px solid var(--themelab-preview-border);
+	border-top: 0;
+	border-radius: 0 0 var(--themelab-preview-radius) var(--themelab-preview-radius);
+	/* The forum body joins the preview title bar with no rounded gap. */
+	background: var(--themelab-preview-background);
+	color: var(--themelab-preview-text);
+	transition: width 0.18s ease;
+}
+
+.themelab_mini_forum[data-width-mode="fixed"] {
+	/* Keep the preview flush with its title bar in every Studio. */
+	width: 100%;
+	margin: 0;
+}
+
+.themelab_mini_forum[data-width-mode="fluid"] {
+	width: 100%;
+}
+
+.themelab_mini_forum[data-shadow="none"] {
+	box-shadow: none;
+}
+
+.themelab_mini_forum[data-shadow="soft"] {
+	box-shadow: 0 3px 9px rgba(0, 0, 0, 0.11);
+}
+
+.themelab_mini_forum[data-shadow="medium"] {
+	box-shadow: 0 7px 18px rgba(0, 0, 0, 0.18);
+}
+
+.themelab_mini_forum[data-shadow="strong"] {
+	box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+}
+
+.themelab_preview_header {
+	padding: 16px;
+	background: var(--themelab-preview-header);
+	color: #fff;
+}
+
+.themelab_preview_logo {
+	margin-bottom: 12px;
+	font-size: 1.35em;
+	font-weight: bold;
+}
+
+.themelab_preview_navigation {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 7px;
+}
+
+.themelab_preview_navigation a {
+	padding: 5px 9px;
+	border-radius: var(--themelab-preview-radius);
+	background: rgba(255, 255, 255, 0.14);
+	color: #fff;
+	text-decoration: none;
+}
+
+.themelab_preview_breadcrumb {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+	padding: 9px 12px;
+	border-bottom: 1px solid var(--themelab-preview-border);
+	background: var(--themelab-preview-surface-alt);
+}
+
+.themelab_preview_breadcrumb a,
+.themelab_preview_board_link,
+.themelab_preview_post_actions a { color: var(--themelab-preview-link); }
+.themelab_preview_breadcrumb a:hover, .themelab_preview_board_link:hover, .themelab_preview_post_actions a:hover { color: var(--themelab-preview-link-hover, var(--themelab-preview-link)); }
+.themelab_preview_link_states { display:none; padding:8px 12px; gap:10px; align-items:center; border-bottom:1px solid var(--themelab-preview-border); background:var(--themelab-preview-surface); }
+.themelab_mini_forum[data-preview-mode="palette"] .themelab_preview_link_states { display:flex; }
+.themelab_preview_link_states a { text-decoration:underline; }
+.themelab_preview_link_states .is_normal { color:var(--themelab-preview-link)!important; }
+.themelab_preview_link_states .is_hover { color:var(--themelab-preview-link-hover, var(--themelab-preview-link))!important; }
+.themelab_preview_link_states .is_visited { color:var(--themelab-preview-link-visited, var(--themelab-preview-link))!important; }
+
+.themelab_preview_board,
+.themelab_preview_topic {
+	margin: 12px;
+	border: 1px solid var(--themelab-preview-border);
+	border-radius: var(--themelab-preview-radius);
+	background: var(--themelab-preview-surface);
+}
+
+.themelab_preview_board_header,
+.themelab_preview_topic_header {
+	padding: 9px 12px;
+	border-radius:
+		var(--themelab-preview-radius)
+		var(--themelab-preview-radius)
+		0
+		0;
+	color: var(--themelab-board-header-text, #fff);
+}
+
+.themelab_preview_board_header { background: var(--themelab-category-header-background, var(--themelab-preview-primary)); }
+.themelab_preview_topic_header { background: var(--themelab-card-header-background, var(--themelab-preview-secondary, var(--themelab-preview-primary))); }
+
+/* RC6.0.5 Unified category-header ownership.
+ * Topic-view title bars are category-style bars and therefore consume the
+ * same Board Index category background and foreground tokens everywhere. */
+.themelab_preview_board_header h3,
+.themelab_preview_topic_header h3 {
+	margin: 0;
+	font-size: 1.05em;
+	color: inherit;
+}
+
+.themelab_preview_board_row {
+	display: grid;
+	grid-template-columns: auto minmax(0, 1fr) auto;
+	gap: 10px;
+	align-items: center;
+	padding: 12px;
+}
+
+.themelab_preview_board_icon {
+	color: var(--themelab-preview-accent);
+	font-size: 1.6em;
+}
+
+.themelab_preview_board_content p {
+	margin: 4px 0 0;
+	color: var(--themelab-preview-muted-text);
+}
+
+.themelab_preview_board_link {
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.themelab_preview_board_stats {
+	display: flex;
+	flex-direction: column;
+	text-align: right;
+	color: var(--themelab-preview-muted-text);
+}
+
+.themelab_preview_post {
+	display: grid;
+	grid-template-columns: 105px minmax(0, 1fr);
+}
+
+.themelab_preview_member {
+	display: flex;
+	flex-direction: column;
+	gap: 3px;
+	padding: 12px;
+	border-right: 1px solid var(--themelab-preview-border);
+	background: var(--themelab-preview-surface-alt);
+}
+
+.themelab_preview_member span {
+	color: var(--themelab-preview-muted-text);
+	font-size: 0.88em;
+}
+
+.themelab_preview_message {
+	padding: 12px;
+}
+
+.themelab_preview_message p {
+	margin-top: 0;
+}
+
+.themelab_preview_message blockquote {
+	margin: 12px 0;
+	padding: 9px 11px;
+	border-left: 4px solid var(--themelab-preview-accent);
+	background: var(--themelab-preview-surface-alt);
+}
+
+.themelab_preview_code {
+	display: block;
+	padding: 9px 11px;
+	border: 1px solid var(--themelab-preview-border);
+	border-radius: var(--themelab-preview-radius);
+	background: var(--themelab-preview-surface-alt);
+	color: var(--themelab-preview-text);
+}
+
+.themelab_preview_post_actions {
+	display: flex;
+	justify-content: flex-end;
+	gap: 10px;
+	margin-top: 12px;
+}
+
+.themelab_preview_footer {
+	padding: 10px 12px;
+	background: var(--themelab-preview-footer);
+	color: var(--themelab-preview-text);
+	text-align: center;
+	font-size: 0.88em;
+}
+
+.themelab_mini_forum[data-spacing="compact"]
+.themelab_preview_board,
+.themelab_mini_forum[data-spacing="compact"]
+.themelab_preview_topic {
+	margin: 8px;
+}
+
+.themelab_mini_forum[data-spacing="comfortable"]
+.themelab_preview_board,
+.themelab_mini_forum[data-spacing="comfortable"]
+.themelab_preview_topic {
+	margin: 16px;
+}
+
+@media (max-width: 900px) {
+	.themelab_preview_column {
+		position: static;
+	}
+
+	.themelab_preview_post {
+		grid-template-columns: 1fr;
+	}
+
+	.themelab_preview_member {
+		border-right: 0;
+		border-bottom: 1px solid var(--themelab-preview-border);
+	}
+}
+
+/* Shared two-column Studio layout */
+
+.themelab_studio_layout {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(500px, 1fr);
+	gap: 18px;
+}
+
+.themelab_studio_controls {
+	display: grid;
+	gap: 16px;
+}
+
+.themelab_header_panel {
+	box-sizing: border-box;
+	padding: 16px;
+	border: 1px solid #c9cdd1;
+	border-radius: 6px;
+	background: rgba(255, 255, 255, 0.45);
+}
+
+.themelab_header_panel h4 {
+	margin: 0 0 10px;
+	font-size: 1.1em;
+}
+
+.themelab_header_panel h5 {
+	margin: 16px 0 7px;
+}
+
+.themelab_header_color_grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 14px;
+	margin-top: 14px;
+}
+
+.themelab_header_color_grid label {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+	padding: 10px;
+	border: 1px solid #c9cdd1;
+	border-radius: 5px;
+}
+
+.themelab_header_color_grid input[type="color"] {
+	width: 54px;
+	height: 38px;
+	padding: 1px;
+	cursor: pointer;
+}
+
+/* Header preview behavior */
+
+.themelab_preview_header {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	box-sizing: border-box;
+	position: relative;
+	isolation: isolate;
+	overflow: hidden;
+	transition:
+		min-height 0.15s ease,
+		background 0.15s ease,
+		color 0.15s ease;
+}
+
+
+.themelab_preview_header_artwork,
+.themelab_preview_header_overlay {
+	position: absolute !important;
+	inset: 0 !important;
+	width: 100% !important;
+	height: 100% !important;
+	pointer-events: none !important;
+}
+
+.themelab_preview_header_artwork {
+	z-index: 0 !important;
+	background-repeat: no-repeat !important;
+	background-origin: border-box !important;
+	background-clip: border-box !important;
+	transform: none !important;
+	transition: background-position .12s ease, background-size .12s ease, opacity .12s ease;
+}
+
+.themelab_preview_header_overlay {
+	z-index: 1 !important;
+	background: #000 !important;
+	transition: opacity .12s ease;
+}
+
+.themelab_preview_header > *:not(.themelab_preview_header_artwork):not(.themelab_preview_header_overlay) {
+	position: relative;
+	z-index: 2;
+}
+
+.themelab_preview_header:not([data-has-background-image="1"]) .themelab_preview_header_artwork,
+.themelab_preview_header:not([data-has-background-image="1"]) .themelab_preview_header_overlay {
+	display: none !important;
+}
+
+.themelab_preview_header[data-logo-alignment="left"] .themelab_preview_logo {
+	text-align: left;
+}
+
+.themelab_preview_header[data-logo-alignment="center"] .themelab_preview_logo {
+	text-align: center;
+}
+
+.themelab_preview_header[data-logo-alignment="right"] .themelab_preview_logo {
+	text-align: right;
+}
+
+.themelab_preview_header_tools {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.themelab_preview_header[data-navigation-alignment="left"]
+.themelab_preview_header_tools {
+	justify-content: flex-start;
+}
+
+.themelab_preview_header[data-navigation-alignment="center"]
+.themelab_preview_header_tools {
+	justify-content: center;
+}
+
+.themelab_preview_header[data-navigation-alignment="right"]
+.themelab_preview_header_tools {
+	justify-content: flex-end;
+}
+
+.themelab_preview_search {
+	box-sizing: border-box;
+	min-width: 86px;
+	padding: 5px 8px;
+	border: 1px solid rgba(255, 255, 255, 0.45);
+	border-radius: 4px;
+	background: rgba(255, 255, 255, 0.16);
+	font-size: 0.85em;
+}
+
+.themelab_preview_header[data-search-position="hidden"]
+.themelab_preview_search {
+	display: none;
+}
+
+.themelab_preview_header[data-search-position="right"]
+.themelab_preview_search {
+	order: 2;
+}
+
+.themelab_preview_header[data-search-position="left"]
+.themelab_preview_search {
+	order: 0;
+}
+
+.themelab_preview_navigation {
+	order: 1;
+}
+
+.themelab_preview_header[data-navigation-style="classic"]
+.themelab_preview_navigation a {
+	border-radius: 0;
+	border-bottom: 2px solid rgba(255, 255, 255, 0.6);
+	background: transparent;
+}
+
+.themelab_preview_header[data-navigation-style="pills"]
+.themelab_preview_navigation a {
+	border-radius: 5px;
+	background: rgba(255, 255, 255, 0.16);
+}
+
+.themelab_preview_header[data-navigation-style="minimal"]
+.themelab_preview_navigation a {
+	padding: 4px 6px;
+	border-radius: 0;
+	background: transparent;
+}
+
+@media (max-width: 900px) {
+	.themelab_studio_layout {
+		grid-template-columns: 1fr;
+	}
+
+	.themelab_header_color_grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* Footer Studio preview */
+
+.themelab_preview_footer {
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	justify-content: center;
+	gap: 5px;
+	box-sizing: border-box;
+	padding: 10px 12px;
+	transition:
+		min-height 0.15s ease,
+		background 0.15s ease,
+		color 0.15s ease;
+}
+
+.themelab_preview_footer_text,
+.themelab_preview_footer_brand {
+	max-width: 100%;
+}
+
+.themelab_preview_footer[data-text-alignment="left"] .themelab_preview_footer_text,
+.themelab_preview_footer[data-text-alignment="left"] .themelab_preview_footer_brand {
+	align-self: flex-start;
+	text-align: left;
+}
+
+.themelab_preview_footer[data-text-alignment="center"] .themelab_preview_footer_text,
+.themelab_preview_footer[data-text-alignment="center"] .themelab_preview_footer_brand {
+	align-self: center;
+	text-align: center;
+}
+
+.themelab_preview_footer[data-text-alignment="right"] .themelab_preview_footer_text,
+.themelab_preview_footer[data-text-alignment="right"] .themelab_preview_footer_brand {
+	align-self: flex-end;
+	text-align: right;
+}
+
+.themelab_preview_footer_system_row {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+	align-items: start;
+	gap: 8px 14px;
+	width: 100%;
+}
+
+.themelab_preview_footer_credit {
+	justify-self: start;
+	text-align: left;
+}
+
+.themelab_preview_footer_navigation {
+	justify-self: end;
+	text-align: right;
+}
+
+.themelab_preview_footer_credit.is_hidden {
+	display: none;
+}
+
+.themelab_footer_credit_sample {
+	display: grid;
+	gap: 4px;
+	margin-top: 12px;
+	padding: 10px 12px;
+	border: 1px solid var(--themelab-preview-border, #c7cdd1);
+	border-radius: 5px;
+	background: rgba(255, 255, 255, 0.5);
+}
+
+
+
+/* Typography Core semantic Medium rendering.
+ * Bundled web-safe fonts commonly have only regular and bold faces, causing
+ * numeric 500 to collapse visually to 400. Theme Lab keeps 500 in project
+ * data and adds a restrained stroke only to the semantic Medium state. */
+.themelab_weight_sample.is_medium,
+.themelab_mini_forum[data-heading-weight="500"] .themelab_preview_heading,
+.themelab_preview_heading[data-font-weight="500"],
+.themelab_mini_forum[data-button-weight="500"] .themelab_demo_button {
+	-webkit-text-stroke: var(--themelab-medium-font-stroke, 0.22px) currentColor;
+	paint-order: stroke fill;
+}
+
+.themelab_mini_forum[data-heading-weight="400"] .themelab_preview_heading,
+.themelab_mini_forum[data-heading-weight="700"] .themelab_preview_heading,
+.themelab_preview_heading[data-font-weight="400"],
+.themelab_preview_heading[data-font-weight="700"],
+.themelab_mini_forum[data-button-weight="400"] .themelab_demo_button,
+.themelab_mini_forum[data-button-weight="700"] .themelab_demo_button {
+	-webkit-text-stroke: 0 currentColor;
+}
+
+/* Button Studio */
+.themelab_button_grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 16px;
+}
+
+.themelab_preview_buttons {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+	margin: 14px 0;
+}
+
+.themelab_demo_button {
+	box-sizing: border-box;
+	padding: var(--themelab-button-padding-y) var(--themelab-button-padding-x);
+	border: var(--themelab-button-border-width) solid var(--themelab-preview-button);
+	border-radius: var(--themelab-button-radius);
+	background: var(--themelab-preview-button);
+	color: var(--themelab-button-primary-text, #fff);
+	font: inherit;
+	font-weight: var(--themelab-button-font-weight);
+	text-transform: var(--themelab-button-text-transform);
+	cursor: pointer;
+	transition: transform .15s ease, filter .15s ease, box-shadow .15s ease;
+}
+.themelab_demo_button.is_primary {
+	background: var(--themelab-preview-primary);
+	border-color: var(--themelab-preview-primary);
+	color: var(--themelab-button-primary-text, #fff);
+}
+.themelab_demo_button.is_secondary {
+	background: var(--themelab-preview-secondary);
+	border-color: var(--themelab-preview-secondary);
+	color: var(--themelab-button-secondary-text, #222);
+}
+.themelab_demo_button.is_danger { background:var(--themelab-button-danger-bg,#B33A3A); border-color:var(--themelab-button-danger-border,#8F2E2E); color:var(--themelab-button-danger-text,#fff); }
+
+/* Keep host-theme button focus/active rules from replacing preview colors. */
+.themelab_mini_forum button.themelab_demo_button.is_primary:focus,
+.themelab_mini_forum button.themelab_demo_button.is_primary:focus-visible,
+.themelab_mini_forum button.themelab_demo_button.is_primary:active {
+	background: var(--themelab-preview-primary);
+	border-color: var(--themelab-preview-primary);
+	color: var(--themelab-button-primary-text, #fff);
+}
+.themelab_mini_forum button.themelab_demo_button.is_secondary:focus,
+.themelab_mini_forum button.themelab_demo_button.is_secondary:focus-visible,
+.themelab_mini_forum button.themelab_demo_button.is_secondary:active {
+	background: var(--themelab-preview-secondary);
+	border-color: var(--themelab-preview-secondary);
+	color: var(--themelab-button-secondary-text, #222);
+}
+.themelab_mini_forum button.themelab_demo_button.is_danger:focus,
+.themelab_mini_forum button.themelab_demo_button.is_danger:focus-visible,
+.themelab_mini_forum button.themelab_demo_button.is_danger:active {
+	background: var(--themelab-button-danger-bg,#B33A3A);
+	border-color: var(--themelab-button-danger-border,#8F2E2E);
+	color: var(--themelab-button-danger-text,#fff);
+}
+.themelab_demo_button.is_small { padding: calc(var(--themelab-button-padding-y) * .65) calc(var(--themelab-button-padding-x) * .7); font-size: .82em; }
+.themelab_demo_button.is_large { padding: calc(var(--themelab-button-padding-y) * 1.25) calc(var(--themelab-button-padding-x) * 1.25); font-size: 1.08em; }
+.themelab_demo_button:disabled { opacity:1; cursor:not-allowed; background:var(--themelab-button-disabled-bg,#D6DCE2); border-color:var(--themelab-button-disabled-border,#C3CAD2); color:var(--themelab-button-disabled-text,#6B7280); }
+.themelab_mini_forum[data-button-depth="flat"] .themelab_demo_button { box-shadow: none; }
+.themelab_mini_forum[data-button-depth="soft"] .themelab_demo_button { box-shadow: 0 2px 5px rgba(0,0,0,.18); }
+.themelab_mini_forum[data-button-depth="raised"] .themelab_demo_button { box-shadow: 0 3px 0 rgba(0,0,0,.28), 0 5px 8px rgba(0,0,0,.16); }
+.themelab_mini_forum[data-button-hover="darken"] .themelab_demo_button:not(:disabled):hover { filter: brightness(.86); }
+.themelab_mini_forum[data-button-hover="lift"] .themelab_demo_button:not(:disabled):hover { transform: translateY(-2px); }
+.themelab_mini_forum[data-button-hover="glow"] .themelab_demo_button:not(:disabled):hover { box-shadow: 0 0 0 3px rgba(52,101,164,.25), 0 3px 10px rgba(0,0,0,.2); }
+
+@media (max-width: 700px) {
+	.themelab_button_grid { grid-template-columns: 1fr; }
+}
+
+
+/* Menu and Navigation Studio */
+/*
+ * Menu shape and spacing belong to Menus & Navigation Studio in every shared
+ * preview. Header Studio may still choose classic, pills, or minimal visual
+ * treatment, but it must not replace the saved menu radius or padding tokens.
+ */
+.themelab_mini_forum .themelab_preview_header[data-navigation-style] .themelab_preview_navigation a {
+	padding: var(--themelab-navigation-padding-y) var(--themelab-navigation-padding-x);
+	border-radius: var(--themelab-navigation-radius);
+}
+.themelab_preview_navigation { gap: var(--themelab-navigation-gap); }
+.themelab_preview_navigation a {
+	padding: var(--themelab-navigation-padding-y) var(--themelab-navigation-padding-x);
+	border-radius: var(--themelab-navigation-radius);
+	font-weight: var(--themelab-navigation-font-weight);
+	text-transform: var(--themelab-navigation-text-transform);
+}
+.themelab_mini_forum[data-navigation-active="filled"] .themelab_preview_navigation a.is_active { background: rgba(255,255,255,.28); }
+.themelab_mini_forum[data-navigation-active="underline"] .themelab_preview_navigation a.is_active { background: transparent; box-shadow: inset 0 -3px 0 currentColor; border-radius: 0; }
+.themelab_mini_forum[data-navigation-active="outline"] .themelab_preview_navigation a.is_active { background: transparent; box-shadow: inset 0 0 0 1px rgba(255,255,255,.7); }
+.themelab_mini_forum[data-breadcrumb-style="bar"] .themelab_preview_breadcrumb { background: var(--themelab-preview-secondary); color: #fff; }
+.themelab_mini_forum[data-breadcrumb-style="bar"] .themelab_preview_breadcrumb a { color: #fff; }
+.themelab_mini_forum[data-breadcrumb-style="boxed"] .themelab_preview_breadcrumb { margin: 8px; border: 1px solid var(--themelab-preview-secondary); border-radius: var(--themelab-navigation-radius); }
+.themelab_mini_forum[data-breadcrumb-separator="slash"] .themelab_preview_breadcrumb span { font-size: 0; }
+.themelab_mini_forum[data-breadcrumb-separator="slash"] .themelab_preview_breadcrumb span::after { content: "/"; font-size: 12px; }
+.themelab_mini_forum[data-breadcrumb-separator="dot"] .themelab_preview_breadcrumb span { font-size: 0; }
+.themelab_mini_forum[data-breadcrumb-separator="dot"] .themelab_preview_breadcrumb span::after { content: "•"; font-size: 12px; }
+.themelab_preview_pagination { display:flex; justify-content:flex-end; align-items:center; gap:var(--themelab-pagination-gap,5px); padding:10px 14px; background:var(--themelab-preview-surface-alt); }
+.themelab_preview_pagination a,
+.themelab_preview_pagination .current_page { box-sizing:border-box; color:var(--themelab-preview-link); text-decoration:none; line-height:1.35; border:1px solid transparent; background:transparent; font-weight:400; }
+.themelab_mini_forum[data-pagination-size="compact"] .themelab_preview_pagination a,
+.themelab_mini_forum[data-pagination-size="compact"] .themelab_preview_pagination .current_page { padding:2px 6px; font-size:.92em; }
+.themelab_mini_forum[data-pagination-size="standard"] .themelab_preview_pagination a,
+.themelab_mini_forum[data-pagination-size="standard"] .themelab_preview_pagination .current_page { padding:3px 7px; font-size:1em; }
+.themelab_mini_forum[data-pagination-size="large"] .themelab_preview_pagination a,
+.themelab_mini_forum[data-pagination-size="large"] .themelab_preview_pagination .current_page { padding:5px 10px; font-size:1.06em; }
+.themelab_mini_forum[data-pagination-style="boxed"] .themelab_preview_pagination a,
+.themelab_mini_forum[data-pagination-style="boxed"] .themelab_preview_pagination .current_page { border-color:var(--themelab-preview-secondary); border-radius:var(--themelab-pagination-radius,5px); background:var(--themelab-preview-surface); }
+.themelab_mini_forum[data-pagination-style="pills"] .themelab_preview_pagination a,
+.themelab_mini_forum[data-pagination-style="pills"] .themelab_preview_pagination .current_page { border-color:var(--themelab-preview-secondary); border-radius:999px; background:var(--themelab-preview-surface); }
+.themelab_mini_forum[data-pagination-active="filled"] .themelab_preview_pagination .current_page { background:var(--themelab-preview-primary) !important; color:var(--themelab-button-primary-text,#fff) !important; border-color:var(--themelab-preview-primary) !important; box-shadow:none; }
+.themelab_mini_forum[data-pagination-active="outline"] .themelab_preview_pagination .current_page { background:transparent !important; color:var(--themelab-preview-primary) !important; border-color:var(--themelab-preview-primary) !important; box-shadow:0 0 0 1px color-mix(in srgb,var(--themelab-preview-primary) 18%,transparent); }
+.themelab_mini_forum[data-pagination-active="underline"] .themelab_preview_pagination .current_page { background:transparent !important; color:var(--themelab-preview-primary) !important; border-color:transparent !important; border-radius:0 !important; box-shadow:inset 0 -3px 0 var(--themelab-preview-primary); }
+.themelab_mini_forum[data-pagination-active-weight="balanced"][data-pagination-active="filled"] .themelab_preview_pagination .current_page { font-weight:500; }
+.themelab_mini_forum[data-pagination-active-weight="balanced"][data-pagination-active="outline"] .themelab_preview_pagination .current_page { font-weight:500; }
+.themelab_mini_forum[data-pagination-active-weight="balanced"][data-pagination-active="underline"] .themelab_preview_pagination .current_page { font-weight:600; }
+.themelab_mini_forum[data-pagination-active-weight="400"] .themelab_preview_pagination .current_page { font-weight:400; }
+.themelab_mini_forum[data-pagination-active-weight="500"] .themelab_preview_pagination .current_page { font-weight:500; }
+.themelab_mini_forum[data-pagination-active-weight="600"] .themelab_preview_pagination .current_page { font-weight:600; }
+.themelab_mini_forum[data-pagination-active-weight="700"] .themelab_preview_pagination .current_page { font-weight:700; }
+
+
+/* Form Controls Studio */
+.themelab_preview_form { display:none; gap:9px; margin:14px 0; padding:11px; background:var(--themelab-preview-surface-alt); border:1px solid var(--themelab-preview-border); border-radius:var(--themelab-preview-radius); }
+.themelab_preview_form > label { display:grid; gap:4px; font-weight:var(--themelab-form-label-weight); }
+.themelab_preview_form input[type="text"], .themelab_preview_form input[type="email"], .themelab_preview_form select, .themelab_preview_form textarea { box-sizing:border-box; width:100%; border:var(--themelab-form-border-width) solid var(--themelab-preview-border); border-radius:var(--themelab-form-radius); padding:6px var(--themelab-form-padding-x); background:var(--themelab-preview-surface); color:var(--themelab-preview-text); font:inherit; font-weight:400; outline:none; }
+.themelab_mini_forum[data-form-size="compact"] .themelab_preview_form input, .themelab_mini_forum[data-form-size="compact"] .themelab_preview_form select { min-height:26px; padding-top:3px; padding-bottom:3px; }
+.themelab_mini_forum[data-form-size="standard"] .themelab_preview_form input, .themelab_mini_forum[data-form-size="standard"] .themelab_preview_form select { min-height:32px; }
+.themelab_mini_forum[data-form-size="comfortable"] .themelab_preview_form input, .themelab_mini_forum[data-form-size="comfortable"] .themelab_preview_form select { min-height:40px; padding-top:8px; padding-bottom:8px; }
+.themelab_preview_form textarea {
+	display: block;
+	box-sizing: border-box;
+	width: 100%;
+	min-width: 12rem;
+	max-width: 100%;
+	height: auto;
+	min-height: var(--themelab-textarea-height);
+	overflow: auto;
+	resize: vertical;
+}
+.themelab_mini_forum[data-textarea-resize="none"] .themelab_preview_form textarea {
+	width: 100%;
+	resize: none;
+}
+.themelab_mini_forum[data-textarea-resize="vertical"] .themelab_preview_form textarea {
+	width: 100%;
+	resize: vertical;
+}
+.themelab_mini_forum[data-textarea-resize="horizontal"] .themelab_preview_form textarea,
+.themelab_mini_forum[data-textarea-resize="both"] .themelab_preview_form textarea {
+	/* Leave visible room inside the preview so horizontal dragging has somewhere to go. */
+	width: calc(100% - 14px);
+}
+.themelab_mini_forum[data-textarea-resize="horizontal"] .themelab_preview_form textarea { resize: horizontal; }
+.themelab_mini_forum[data-textarea-resize="both"] .themelab_preview_form textarea { resize: both; }
+
+/* Native content-based textarea growth, with JavaScript fallback supplied by ThemeLabPreview. */
+@supports (field-sizing: content) {
+	.themelab_mini_forum.themelab_has_native_field_sizing .themelab_preview_form textarea {
+		field-sizing: content;
+		height: auto;
+		min-height: var(--themelab-textarea-height);
+	}
+}
+
+.themelab_mini_forum.themelab_uses_field_sizing_fallback .themelab_preview_form textarea {
+	height: auto;
+	min-height: var(--themelab-textarea-height);
+}
+
+/* Form focus preview. Every mode explicitly resets outline/shadow so host Curve2 focus rules cannot force Glow.
+ * .themelab_focus_demo mirrors :focus without stealing keyboard focus from the Studio controls. */
+.themelab_mini_forum[data-form-focus="none"] .themelab_preview_form :is(input,select,textarea):is(:focus,.themelab_focus_demo) { border-color:var(--themelab-preview-border) !important; outline:none !important; box-shadow:none !important; }
+.themelab_mini_forum[data-form-focus="border"] .themelab_preview_form :is(input,select,textarea):is(:focus,.themelab_focus_demo) { border-color:var(--themelab-preview-primary) !important; border-width:max(2px,var(--themelab-form-border-width)) !important; outline:none !important; box-shadow:none !important; }
+.themelab_mini_forum[data-form-focus="glow"] .themelab_preview_form :is(input,select,textarea):is(:focus,.themelab_focus_demo) { border-color:var(--themelab-preview-primary) !important; outline:none !important; box-shadow:0 0 0 3px color-mix(in srgb,var(--themelab-preview-primary) 22%,transparent) !important; }
+.themelab_mini_forum[data-form-focus="underline"] .themelab_preview_form :is(input,select,textarea):is(:focus,.themelab_focus_demo) { border-color:var(--themelab-preview-border) !important; border-bottom-color:var(--themelab-preview-primary) !important; border-radius:0 !important; outline:none !important; box-shadow:inset 0 -2px 0 var(--themelab-preview-primary) !important; }
+.themelab_preview_choices { display:grid; gap:5px; }
+.themelab_preview_choices label { display:flex; align-items:center; gap:7px; font-weight:400; }
+.themelab_preview_choices input { width:var(--themelab-choice-size); height:var(--themelab-choice-size); accent-color:var(--themelab-preview-primary); }
+.themelab_mini_forum[data-choice-style="rounded"] .themelab_preview_choices input[type="checkbox"] { border-radius:4px; }
+.themelab_mini_forum[data-choice-style="modern"] .themelab_preview_choices input { filter:saturate(1.25); }
+.themelab_required_marker { color:#b00020; }
+.themelab_mini_forum[data-required-marker="none"] .themelab_required_marker { display:none; }
+.themelab_mini_forum[data-required-marker="bold"] .themelab_required_marker { display:none; }
+.themelab_mini_forum[data-required-marker="bold"] .themelab_preview_form > label:first-child { font-weight:700; }
+.themelab_validation_sample small { color:#b00020; font-weight:400; }
+.themelab_mini_forum[data-validation-style="border"] .themelab_validation_sample input { border-color:#b00020; }
+.themelab_mini_forum[data-validation-style="background"] .themelab_validation_sample { padding:7px; background:rgba(176,0,32,.08); border-radius:var(--themelab-form-radius); }
+.themelab_mini_forum[data-validation-style="icon"] .themelab_validation_sample::before { content:"⚠ "; color:#b00020; }
+.themelab_mini_forum[data-validation-style="icon"] .themelab_validation_sample input { border-color:#b00020; }
+
+/* Form Controls Studio focused preview. */
+.themelab_mini_forum[data-preview-mode="forms"] .themelab_preview_breadcrumb,
+.themelab_mini_forum[data-preview-mode="forms"] .themelab_preview_board,
+.themelab_mini_forum[data-preview-mode="forms"] .themelab_preview_topic_header,
+.themelab_mini_forum[data-preview-mode="forms"] .themelab_preview_member,
+.themelab_mini_forum[data-preview-mode="forms"] .themelab_preview_message > p,
+.themelab_mini_forum[data-preview-mode="forms"] .themelab_preview_message > blockquote,
+.themelab_mini_forum[data-preview-mode="forms"] .themelab_preview_message > code,
+.themelab_mini_forum[data-preview-mode="forms"] .themelab_preview_buttons,
+.themelab_mini_forum[data-preview-mode="forms"] .themelab_preview_post_actions,
+.themelab_mini_forum[data-preview-mode="forms"] .themelab_preview_pagination {
+	display: none;
+}
+.themelab_mini_forum[data-preview-mode="forms"] .themelab_preview_topic {
+	margin: 12px;
+	border: 0;
+	background: transparent;
+}
+.themelab_mini_forum[data-preview-mode="forms"] .themelab_preview_post,
+.themelab_mini_forum[data-preview-mode="forms"] .themelab_preview_message {
+	display: block;
+	padding: 0;
+	border: 0;
+	background: transparent;
+}
+.themelab_mini_forum[data-preview-mode="forms"] .themelab_preview_form {
+	display: grid;
+	margin: 0;
+}
+.themelab_preview_form_heading {
+	margin: 0 0 2px;
+	font-size: 1.08em;
+	color: var(--themelab-preview-text);
+}
+.themelab_preview_form input[type="search"],
+.themelab_preview_form input[type="password"] {
+	box-sizing: border-box;
+	width: 100%;
+	border: var(--themelab-form-border-width) solid var(--themelab-preview-border);
+	border-radius: var(--themelab-form-radius);
+	padding: 6px var(--themelab-form-padding-x);
+	background: var(--themelab-preview-surface);
+	color: var(--themelab-preview-text);
+	font: inherit;
+	font-weight: 400;
+	outline: none;
+}
+.themelab_preview_form input:disabled,
+.themelab_preview_form select:disabled,
+.themelab_preview_form textarea:disabled {
+	opacity: .58;
+	cursor: not-allowed;
+	background: var(--themelab-preview-background);
+}
+.themelab_preview_choices label {
+	position: relative;
+	min-height: var(--themelab-choice-size);
+	padding-left: calc(var(--themelab-choice-size) + 7px);
+}
+.themelab_preview_choices input[type="checkbox"],
+.themelab_preview_choices input[type="radio"] {
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: var(--themelab-choice-size);
+	height: var(--themelab-choice-size);
+	margin: 0;
+	opacity: 0;
+	transform: translateY(-50%);
+	cursor: pointer;
+}
+.themelab_choice_indicator {
+	position: absolute;
+	left: 0;
+	top: 50%;
+	box-sizing: border-box;
+	width: var(--themelab-choice-size);
+	height: var(--themelab-choice-size);
+	border: 1px solid var(--themelab-preview-border);
+	background: var(--themelab-preview-surface);
+	transform: translateY(-50%);
+}
+.themelab_preview_choices input[type="radio"] + .themelab_choice_indicator {
+	border-radius: 50%;
+}
+.themelab_mini_forum[data-choice-style="classic"] .themelab_preview_choices input[type="checkbox"] + .themelab_choice_indicator {
+	border-radius: 1px;
+}
+.themelab_mini_forum[data-choice-style="rounded"] .themelab_preview_choices input[type="checkbox"] + .themelab_choice_indicator {
+	border-radius: 5px;
+}
+.themelab_mini_forum[data-choice-style="modern"] .themelab_choice_indicator {
+	border: 2px solid var(--themelab-preview-primary);
+}
+.themelab_preview_choices input[type="checkbox"]:checked + .themelab_choice_indicator,
+.themelab_preview_choices input[type="radio"]:checked + .themelab_choice_indicator {
+	border-color: var(--themelab-preview-primary);
+}
+.themelab_mini_forum[data-choice-style="classic"] .themelab_preview_choices input:checked + .themelab_choice_indicator,
+.themelab_mini_forum[data-choice-style="rounded"] .themelab_preview_choices input:checked + .themelab_choice_indicator {
+	background: var(--themelab-preview-primary);
+}
+.themelab_mini_forum[data-choice-style="modern"] .themelab_preview_choices input:checked + .themelab_choice_indicator {
+	background: var(--themelab-preview-primary);
+	box-shadow: 0 0 0 2px var(--themelab-preview-surface) inset;
+}
+.themelab_preview_choices input[type="checkbox"]:checked + .themelab_choice_indicator::after {
+	content: "";
+	position: absolute;
+	left: 28%;
+	top: 9%;
+	width: 28%;
+	height: 52%;
+	border: solid #fff;
+	border-width: 0 2px 2px 0;
+	transform: rotate(45deg);
+}
+.themelab_preview_choices input[type="radio"]:checked + .themelab_choice_indicator::after {
+	content: "";
+	position: absolute;
+	inset: 28%;
+	border-radius: 50%;
+	background: #fff;
+}
+.themelab_mini_forum[data-choice-style="modern"] .themelab_preview_choices input[type="radio"]:checked + .themelab_choice_indicator::after {
+	inset: 24%;
+}
+.themelab_preview_choices input:focus-visible + .themelab_choice_indicator {
+	outline: 2px solid var(--themelab-preview-primary);
+	outline-offset: 2px;
+}
+.themelab_preview_form_submit {
+	justify-self: start;
+}
+
+
+/* RC5 Board Index Studio focused preview. */
+.themelab_preview_board_index { display:none; padding:12px; gap:12px; }
+
+/* RC6.0.4 Unified Board Index preview visibility.
+ * The full forum preview used by Palette, Layout, Typography, Gradient,
+ * Header and Footer now renders the same Board Index component as the
+ * Board Index Studio. This keeps saved Board Index foreground choices
+ * visible across studios instead of falling back to the legacy summary row. */
+.themelab_mini_forum[data-preview-mode="forum"] .themelab_preview_board {
+	display: none;
+}
+.themelab_mini_forum[data-preview-mode="forum"] .themelab_preview_board_index {
+	display: grid;
+}
+.themelab_mini_forum[data-preview-mode="board_index"] .themelab_preview_breadcrumb,
+.themelab_mini_forum[data-preview-mode="board_index"] .themelab_preview_board,
+.themelab_mini_forum[data-preview-mode="board_index"] .themelab_preview_topic,
+.themelab_mini_forum[data-preview-mode="board_index"] .themelab_preview_pagination { display:none; }
+.themelab_mini_forum[data-preview-mode="board_index"] .themelab_preview_board_index { display:grid; }
+.themelab_preview_category { overflow:hidden; border:var(--themelab-board-border-width) solid var(--themelab-preview-border); border-radius:var(--themelab-board-radius); background:var(--themelab-preview-surface); }
+.themelab_preview_category_header { min-height:var(--themelab-board-header-height); box-sizing:border-box; display:flex; align-items:center; padding:7px var(--themelab-board-padding); background:var(--themelab-category-header-background, var(--themelab-preview-primary)); color:var(--themelab-board-header-text,#fff); font-weight:var(--themelab-board-header-weight); }
+/* Board Index semantic Medium rendering. Numeric 500 commonly collapses to
+ * Regular with web-safe fonts, so apply the shared restrained stroke only
+ * while the Board Index category-header weight is Medium. */
+.themelab_mini_forum[data-board-header-weight="500"] .themelab_preview_category_header {
+	-webkit-text-stroke: var(--themelab-medium-font-stroke, 0.22px) currentColor;
+	paint-order: stroke fill;
+}
+.themelab_mini_forum[data-board-header-weight="400"] .themelab_preview_category_header,
+.themelab_mini_forum[data-board-header-weight="700"] .themelab_preview_category_header {
+	-webkit-text-stroke: 0 currentColor;
+}
+.themelab_mini_forum[data-board-header-align="center"] .themelab_preview_category_header { justify-content:center; text-align:center; }
+.themelab_mini_forum[data-board-header-align="right"] .themelab_preview_category_header { justify-content:flex-end; text-align:right; }
+.themelab_preview_board_item { display:grid; grid-template-columns:24px minmax(0,1fr) auto minmax(105px, .8fr); gap:9px; align-items:center; padding:var(--themelab-board-padding); border-top:1px solid var(--themelab-preview-border); background-color:var(--themelab-board-row-background, var(--themelab-preview-surface)); }
+.themelab_mini_forum[data-board-alternating="on"] .themelab_preview_board_item:nth-child(odd) { background-color:var(--themelab-board-row-background-alt, var(--themelab-preview-surface-alt)); background-image:none; }
+.themelab_mini_forum[data-board-row-spacing="tight"] .themelab_preview_board_item { padding-top:7px; padding-bottom:7px; }
+.themelab_mini_forum[data-board-row-spacing="spacious"] .themelab_preview_board_item { padding-top:17px; padding-bottom:17px; }
+.themelab_preview_board_badge { width:18px; height:18px; display:grid; place-items:center; color:var(--themelab-board-unread-indicator,var(--themelab-preview-primary)); }
+.themelab_mini_forum[data-board-icon-style="filled"] .themelab_preview_board_badge { border-radius:50%; background:var(--themelab-category-header-background, var(--themelab-preview-primary)); color:#fff; font-size:0; }
+.themelab_mini_forum[data-board-icon-style="outline"] .themelab_preview_board_badge { border:2px solid var(--themelab-preview-primary); border-radius:50%; color:transparent; }
+.themelab_mini_forum[data-board-icon-style="modern"] .themelab_preview_board_badge { border-radius:4px; background:var(--themelab-category-header-background, var(--themelab-preview-primary)); color:#fff; font-size:10px; }
+.themelab_preview_category_header a { color:var(--themelab-board-header-link,var(--themelab-board-header-text,#fff)); }
+.themelab_preview_board_details a, .themelab_preview_last_post a { color:var(--themelab-preview-link); font-weight:700; }
+.themelab_preview_board_details p { margin:3px 0 0; color:var(--themelab-board-description-text,var(--themelab-preview-muted-text)); font-size:.88em; }
+.themelab_preview_board_counts {
+	font-size: 82%;
+	display: grid;
+	grid-template-columns: 6.2em 1px 6.2em;
+	align-items: center;
+	justify-content: center;
+	gap: 0.32em;
+	width: 13.05em;
+	min-width: 13.05em;
+	padding: 0;
+	border: 0;
+	border-radius: 0;
+	background: transparent;
+	box-shadow: none;
+}
+
+.themelab_studio_layout,
+.themelab_studio_layout > .themelab_studio_controls,
+.themelab_studio_layout > .themelab_preview_column {
+	overflow: visible;
+}
+
+.themelab_preview_column {
+	position: -webkit-sticky;
+	position: sticky;
+	top: 12px;
+	align-self: start;
+	height: fit-content;
+	z-index: 2;
+}
+
+.themelab_palette_workspace,
+.themelab_layout_workspace {
+	margin-top: 0;
+}
+
+@media (max-width: 900px) {
+	.themelab_preview_column {
+		position: static;
+		height: auto;
+		z-index: auto;
+	}
+}
+
+
+/* RC5.4.6 Forms Studio: first-class toggle switches and shared Medium labels. */
+.themelab_mini_forum[data-form-label-weight="500"] .themelab_preview_form > label,
+.themelab_mini_forum[data-form-label-weight="500"] .themelab_preview_choices label,
+.themelab_mini_forum[data-form-label-weight="500"] .themelab_preview_toggles label {
+	-webkit-text-stroke: var(--themelab-medium-font-stroke) currentColor;
+}
+/* Medium is a label treatment only. Form values and placeholders stay Regular. */
+.themelab_mini_forum[data-form-label-weight="500"] .themelab_preview_form input,
+.themelab_mini_forum[data-form-label-weight="500"] .themelab_preview_form select,
+.themelab_mini_forum[data-form-label-weight="500"] .themelab_preview_form textarea,
+.themelab_mini_forum[data-form-label-weight="500"] .themelab_preview_form option,
+.themelab_mini_forum[data-form-label-weight="500"] .themelab_preview_form input::placeholder,
+.themelab_mini_forum[data-form-label-weight="500"] .themelab_preview_form textarea::placeholder {
+	font-weight: 400;
+	-webkit-text-stroke: 0 transparent;
+}
+.themelab_mini_forum:not([data-form-label-weight="500"]) .themelab_preview_form > label,
+.themelab_mini_forum:not([data-form-label-weight="500"]) .themelab_preview_choices label,
+.themelab_mini_forum:not([data-form-label-weight="500"]) .themelab_preview_toggles label {
+	-webkit-text-stroke: 0 transparent;
+}
+.themelab_preview_toggles {
+	display: grid;
+	gap: 8px;
+}
+.themelab_preview_toggles label {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	min-height: var(--themelab-toggle-size);
+	font-weight: var(--themelab-form-label-weight);
+	cursor: pointer;
+}
+.themelab_preview_toggles input[type="checkbox"] {
+	position: absolute;
+	right: 0;
+	width: calc(var(--themelab-toggle-size) * 1.8);
+	height: var(--themelab-toggle-size);
+	margin: 0;
+	opacity: 0;
+}
+.themelab_toggle_indicator {
+	position: relative;
+	flex: 0 0 auto;
+	box-sizing: border-box;
+	width: calc(var(--themelab-toggle-size) * 1.8);
+	height: var(--themelab-toggle-size);
+	border: 1px solid var(--themelab-preview-border);
+	background: var(--themelab-preview-background);
+	transition: background .16s ease, border-color .16s ease;
+}
+.themelab_toggle_indicator::after {
+	content: "";
+	position: absolute;
+	top: 2px;
+	left: 2px;
+	box-sizing: border-box;
+	width: calc(var(--themelab-toggle-size) - 6px);
+	height: calc(var(--themelab-toggle-size) - 6px);
+	background: var(--themelab-preview-surface);
+	box-shadow: 0 1px 3px rgba(0,0,0,.22);
+	transition: transform .16s ease;
+}
+.themelab_mini_forum[data-toggle-style="pill"] .themelab_toggle_indicator,
+.themelab_mini_forum[data-toggle-style="pill"] .themelab_toggle_indicator::after { border-radius: 999px; }
+.themelab_mini_forum[data-toggle-style="rounded"] .themelab_toggle_indicator { border-radius: 6px; }
+.themelab_mini_forum[data-toggle-style="rounded"] .themelab_toggle_indicator::after { border-radius: 4px; }
+.themelab_mini_forum[data-toggle-style="square"] .themelab_toggle_indicator,
+.themelab_mini_forum[data-toggle-style="square"] .themelab_toggle_indicator::after { border-radius: 0; }
+.themelab_preview_toggles input:checked + .themelab_toggle_indicator {
+	border-color: var(--themelab-preview-primary);
+	background: var(--themelab-preview-primary);
+}
+.themelab_preview_toggles input:checked + .themelab_toggle_indicator::after {
+	transform: translateX(calc(var(--themelab-toggle-size) * .8));
+}
+.themelab_preview_toggles input:focus-visible + .themelab_toggle_indicator {
+	outline: 2px solid var(--themelab-preview-primary);
+	outline-offset: 2px;
+}
+.themelab_preview_toggles label.is_disabled { opacity: .56; cursor: not-allowed; }
+
+/* RC5.5.0 Header Studio logo foundation */
+.themelab_logo_heading {
+	display: flex;
+	align-items: center;
+	gap: 7px;
+}
+
+.themelab_tooltip {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 18px;
+	height: 18px;
+	border: 1px solid #8b98a5;
+	border-radius: 50%;
+	font-size: 12px;
+	font-weight: 700;
+	cursor: help;
+}
+
+.themelab_tooltip:hover::after,
+.themelab_tooltip:focus::after {
+	position: absolute;
+	z-index: 50;
+	max-width: 320px;
+	margin: 42px 0 0 8px;
+	padding: 9px 11px;
+	border-radius: 5px;
+	background: #202a33;
+	color: #fff;
+	content: attr(aria-label);
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 1.45;
+	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+.themelab_logo_dropzone {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 132px;
+	margin-top: 14px;
+	padding: 18px;
+	border: 2px dashed #9aa8b5;
+	border-radius: 7px;
+	background: rgba(255, 255, 255, 0.5);
+	text-align: center;
+	cursor: pointer;
+	transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease;
+}
+
+.themelab_logo_dropzone:hover,
+.themelab_logo_dropzone:focus,
+.themelab_logo_dropzone.is_dragging {
+	border-color: #3465a4;
+	background: rgba(52, 101, 164, 0.08);
+	outline: 0;
+}
+
+.themelab_logo_dropzone.is_dragging {
+	transform: scale(1.01);
+}
+
+.themelab_logo_dropzone input[type="file"] {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	opacity: 0;
+	pointer-events: none;
+}
+
+.themelab_logo_dropzone_prompt {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
+
+.themelab_logo_dropzone_prompt strong {
+	font-size: 1.05em;
+}
+
+.themelab_logo_dropzone_prompt small {
+	color: #66737f;
+}
+
+.themelab_logo_status {
+	display: grid;
+	grid-template-columns: 74px minmax(0, 1fr);
+	gap: 12px;
+	align-items: center;
+	margin-top: 12px;
+	padding: 10px;
+	border: 1px solid #b8c7b8;
+	border-radius: 6px;
+	background: rgba(230, 245, 230, 0.72);
+}
+
+.themelab_logo_status.is_empty {
+	grid-template-columns: 1fr;
+	border-color: #c9cdd1;
+	background: rgba(255, 255, 255, 0.42);
+}
+
+.themelab_logo_status img {
+	width: 74px;
+	height: 52px;
+	object-fit: contain;
+	border-radius: 4px;
+	background: repeating-conic-gradient(#e7eaed 0 25%, #fff 0 50%) 50% / 12px 12px;
+}
+
+.themelab_logo_status strong,
+.themelab_logo_status span {
+	display: block;
+}
+
+.themelab_logo_status span {
+	margin-top: 3px;
+	color: #5d6872;
+	font-size: 0.9em;
+	word-break: break-word;
+}
+
+.themelab_logo_actions {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 12px;
+	margin: 10px 0 18px;
+}
+
+.themelab_logo_remove {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+}
+
+.themelab_logo_remove.is_hidden {
+	display: none;
+}
+
+.themelab_preview_logo {
+	min-width: 0;
+}
+
+.themelab_preview_logo_image[hidden],
+.themelab_preview_logo_text[hidden] {
+	display: none !important;
+}
+
+.themelab_preview_logo_image {
+	display: block;
+	max-width: var(--themelab-logo-max-width, 70%);
+	max-height: var(--themelab-logo-max-height, 106px);
+	width: auto;
+	height: auto;
+	object-fit: contain;
+	flex: 0 1 auto;
+}
+
+.themelab_preview_logo[data-logo-mode="image"] {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	min-height: 0;
+	overflow: visible;
+}
+
+.themelab_preview_header[data-logo-alignment="left"] .themelab_preview_logo[data-logo-mode="image"] {
+	justify-content: flex-start;
+}
+
+.themelab_preview_header[data-logo-alignment="center"] .themelab_preview_logo[data-logo-mode="image"] {
+	justify-content: center;
+}
+
+.themelab_preview_header[data-logo-alignment="right"] .themelab_preview_logo[data-logo-mode="image"] {
+	justify-content: flex-end;
+}
+
+
+/* RC5.5.1 Header Studio logo size control */
+.themelab_logo_size_control {
+	margin-top: 18px;
+	padding-top: 16px;
+	border-top: 1px solid #d9e0e6;
+}
+
+.themelab_logo_size_heading {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	margin-bottom: 8px;
+}
+
+.themelab_logo_size_heading .themelab_field_label {
+	margin: 0;
+}
+
+.themelab_logo_size_heading output {
+	min-width: 54px;
+	font-weight: 700;
+	text-align: right;
+}
+
+.themelab_logo_size_control input[type="range"] {
+	width: 100%;
+}
+
+.themelab_logo_size_limits {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 2px;
+}
+
+/* Footer Studio uses the same color-control rhythm as Header Studio. */
+.themelab_color_grid_single {
+	grid-template-columns: minmax(0, 1fr);
+}
+
+/* RC5.6.2 - Central Gradient Studio. */
+.themelab_gradient_studio_controls {
+	display: grid;
+	gap: 18px;
+}
+.themelab_gradient_surface {
+	border: 1px solid var(--themelab-preview-border, #c7cdd1);
+	border-radius: 8px;
+	padding: 16px;
+	background: #fff;
+}
+.themelab_gradient_surface_heading {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 16px;
+	margin-bottom: 12px;
+}
+.themelab_gradient_surface_heading h4,
+.themelab_gradient_surface_heading p { margin: 0; }
+.themelab_gradient_surface_heading p { margin-top: 4px; color: #666; }
+.themelab_switch_row { display: flex; align-items: center; gap: 7px; white-space: nowrap; font-weight: 700; }
+.themelab_gradient_sample {
+	height: 54px;
+	border: 1px solid rgba(0, 0, 0, .18);
+	border-radius: 6px;
+	margin-bottom: 14px;
+}
+.themelab_gradient_fields {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 14px;
+}
+.themelab_gradient_fields label { display: grid; gap: 7px; }
+.themelab_gradient_fields select { width: 100%; }
+.themelab_gradient_flow_help { color: #666; line-height: 1.35; }
+.themelab_gradient_softness input[type="range"] { width: 100%; }
+.themelab_range_ends { display: flex; justify-content: space-between; color: #666; font-size: .88em; }
+@media (max-width: 800px) {
+	.themelab_gradient_fields { grid-template-columns: 1fr; }
+	.themelab_gradient_surface_heading { flex-direction: column; }
+}
+
+
+/* RC5.6.4 Navigation color foundation */
+.themelab_navigation_color_panel { grid-column: 1 / -1; }
+.themelab_navigation_color_grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 10px;
+	margin-top: 10px;
+}
+.themelab_navigation_color_grid label {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+	padding: 9px 10px;
+	border: 1px solid #c9cdd1;
+	border-radius: 5px;
+}
+.themelab_navigation_color_control {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	flex: 0 0 auto;
+}
+.themelab_navigation_color_grid input[type="color"] {
+	width: 54px;
+	height: 36px;
+	padding: 1px;
+	cursor: pointer;
+}
+.themelab_navigation_color_grid .themelab_color_hex {
+	width: 92px;
+	height: 36px;
+}
+@media (max-width: 480px) {
+	.themelab_navigation_color_grid label { align-items: flex-start; flex-direction: column; }
+}
+
+.themelab_preview_navigation a {
+	border: 1px solid var(--themelab-header-button-border);
+	background: var(--themelab-header-button-bg);
+	color: var(--themelab-header-button-text);
+	transition: background .15s ease, color .15s ease, border-color .15s ease, box-shadow .15s ease;
+}
+
+/* Navigation state priority: normal < current < hover. */
+.themelab_mini_forum[data-navigation-active="filled"] .themelab_preview_navigation a.is_active {
+	background: var(--themelab-header-button-current-bg);
+	color: var(--themelab-header-button-current-text);
+	border-color: var(--themelab-header-button-current-bg);
+}
+.themelab_mini_forum[data-navigation-active="underline"] .themelab_preview_navigation a.is_active {
+	background: transparent;
+	color: var(--themelab-header-button-current-text);
+	border-color: transparent;
+	box-shadow: inset 0 -3px 0 var(--themelab-header-button-current-bg);
+	border-radius: 0;
+}
+.themelab_mini_forum[data-navigation-active="outline"] .themelab_preview_navigation a.is_active {
+	background: transparent;
+	color: var(--themelab-header-button-current-text);
+	border-color: var(--themelab-header-button-current-bg);
+	box-shadow: inset 0 0 0 1px var(--themelab-header-button-current-bg);
+}
+.themelab_preview_navigation a:hover,
+.themelab_preview_navigation a:focus-visible,
+.themelab_preview_navigation a.is_hover_sample,
+.themelab_mini_forum[data-navigation-active] .themelab_preview_navigation a.is_active:hover,
+.themelab_mini_forum[data-navigation-active] .themelab_preview_navigation a.is_active:focus-visible {
+	background: var(--themelab-header-button-hover-bg);
+	color: var(--themelab-header-button-hover-text);
+	border-color: var(--themelab-header-button-hover-bg);
+	box-shadow: none;
+}
+
+.themelab_preview_footer_navigation {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--themelab-navigation-gap);
+	align-items: center;
+}
+.themelab_preview_footer_navigation a {
+	color: var(--themelab-footer-button-text);
+	text-decoration: none;
+	font-weight: var(--themelab-navigation-font-weight);
+	text-transform: var(--themelab-navigation-text-transform);
+	transition: background .15s ease, color .15s ease, border-color .15s ease, box-shadow .15s ease;
+}
+.themelab_mini_forum[data-footer-navigation-style="text"] .themelab_preview_footer_navigation a {
+	padding: 2px 1px;
+	border: 0;
+	border-bottom: 1px solid transparent;
+	background: transparent;
+}
+.themelab_mini_forum[data-footer-navigation-style="buttons"] .themelab_preview_footer_navigation a {
+	padding: var(--themelab-navigation-padding-y) var(--themelab-navigation-padding-x);
+	border: 1px solid var(--themelab-footer-button-border);
+	border-radius: var(--themelab-navigation-radius);
+	background: var(--themelab-footer-button-bg);
+}
+.themelab_preview_footer_navigation a.is_current {
+	background: var(--themelab-footer-button-current-bg);
+	color: var(--themelab-footer-button-current-text);
+	border-color: var(--themelab-footer-button-current-bg);
+}
+.themelab_mini_forum[data-footer-navigation-style="text"] .themelab_preview_footer_navigation a.is_current {
+	padding-inline: 4px;
+	border-radius: calc(var(--themelab-navigation-radius) / 2);
+	border-bottom-color: var(--themelab-footer-button-current-bg);
+}
+.themelab_preview_footer_navigation a:hover,
+.themelab_preview_footer_navigation a:focus-visible,
+.themelab_preview_footer_navigation a.is_hover_sample,
+.themelab_preview_footer_navigation a.is_current:hover,
+.themelab_preview_footer_navigation a.is_current:focus-visible {
+	background: var(--themelab-footer-button-hover-bg);
+	color: var(--themelab-footer-button-hover-text);
+	border-color: var(--themelab-footer-button-hover-bg);
+}
+.themelab_mini_forum[data-footer-navigation-style="text"] .themelab_preview_footer_navigation a:hover,
+.themelab_mini_forum[data-footer-navigation-style="text"] .themelab_preview_footer_navigation a:focus-visible,
+.themelab_mini_forum[data-footer-navigation-style="text"] .themelab_preview_footer_navigation a.is_hover_sample,
+.themelab_mini_forum[data-footer-navigation-style="text"] .themelab_preview_footer_navigation a.is_current:hover,
+.themelab_mini_forum[data-footer-navigation-style="text"] .themelab_preview_footer_navigation a.is_current:focus-visible {
+	background: transparent;
+	border-bottom-color: var(--themelab-footer-button-hover-text);
+}
+@media (max-width: 700px) { .themelab_navigation_color_grid { grid-template-columns: 1fr; } }
+/* RC6.1.21aw — Footer Studio owns the normal text-link color.
+ * Hover/current samples remain owned by Buttons Studio so state previews stay meaningful. */
+.themelab_mini_forum[data-footer-navigation-style="text"] .themelab_preview_footer_navigation a.is_normal_sample {
+	color: var(--themelab-preview-footer-link);
+}
+
+/* RC6.1.21ax — Dedicated Footer Studio link-color acceptance sample.
+ * This row is intentionally independent of Buttons Studio hover/current state colors. */
+.themelab_mini_forum .themelab_preview_footer_link_sample {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	align-self: flex-end;
+	gap: 4px 7px;
+	margin: 2px 0;
+	padding: 5px 8px;
+	border: 1px dashed rgba(255, 255, 255, 0.55);
+	border-radius: 4px;
+	background: rgba(255, 255, 255, 0.10);
+	font-size: 0.78em;
+	line-height: 1.3;
+}
+.themelab_mini_forum .themelab_preview_footer_link_sample_label {
+	color: inherit;
+	font-weight: 700;
+}
+.themelab_mini_forum .themelab_preview_footer_link_sample a,
+.themelab_mini_forum .themelab_preview_footer_link_sample a:visited,
+.themelab_mini_forum .themelab_preview_footer_link_sample a:hover,
+.themelab_mini_forum .themelab_preview_footer_link_sample a:focus {
+	color: var(--themelab-preview-footer-link) !important;
+	background: transparent !important;
+	border: 0 !important;
+	box-shadow: none !important;
+	padding: 0 !important;
+	text-decoration: underline;
+	font-weight: 700;
+}
+
+
+/* RC5.7.0 — Theme Review & Publishing, Stage 1. */
+.themelab_review_hero {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 24px;
+	margin-bottom: 12px;
+	border-left: 5px solid #64748b;
+}
+.themelab_review_hero.is_ready { border-left-color: #2e7d32; }
+.themelab_review_hero.needs_attention { border-left-color: #b45309; }
+.themelab_review_hero h2 { margin: 4px 0; font-size: 1.65em; }
+.themelab_review_hero p { margin: 0; }
+.themelab_review_eyebrow { font-size: .82em; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+.themelab_review_status { min-width: 220px; padding: 14px 16px; border: 1px solid #c9cdd1; border-radius: 7px; text-align: center; }
+.themelab_review_status strong, .themelab_review_status span { display: block; }
+.themelab_review_status span { margin-top: 4px; font-size: .9em; }
+.themelab_review_notice { margin: 12px 0; }
+.themelab_review_grid { display: grid; grid-template-columns: minmax(280px, .85fr) minmax(420px, 1.4fr); gap: 16px; align-items: start; }
+.themelab_review_panel { min-height: 100%; }
+.themelab_review_metadata { margin: 0 0 16px; }
+.themelab_review_metadata > div { position: relative; padding: 12px 92px 12px 0; border-bottom: 1px solid #d9dce0; }
+.themelab_review_metadata > div:last-child { border-bottom: 0; }
+.themelab_review_metadata dt { font-weight: 700; }
+.themelab_review_metadata dd { margin: 4px 0 0; overflow-wrap: anywhere; }
+.themelab_review_metadata .is_missing dd { font-style: italic; opacity: .75; }
+.themelab_review_required { color: #b91c1c; }
+.themelab_review_badge { position: absolute; right: 0; top: 12px; padding: 3px 8px; border-radius: 999px; background: #e5e7eb; font-size: .78em; font-weight: 700; }
+.is_complete .themelab_review_badge { background: #dff3e2; color: #256029; }
+.is_missing .themelab_review_badge { background: #fff0d4; color: #8a4b08; }
+.themelab_review_studios { display: grid; gap: 8px; }
+.themelab_review_studio { display: grid; grid-template-columns: 30px 1fr auto; gap: 10px; align-items: center; padding: 11px 12px; border: 1px solid #c9cdd1; border-radius: 6px; text-decoration: none; color: inherit; }
+.themelab_review_studio:hover, .themelab_review_studio:focus { border-color: #557ea0; box-shadow: 0 0 0 2px rgba(85,126,160,.15); text-decoration: none; }
+.themelab_review_studio_icon { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: #e5e7eb; font-weight: 700; }
+.themelab_review_studio.is_configured .themelab_review_studio_icon { background: #dff3e2; color: #256029; }
+.themelab_review_studio strong, .themelab_review_studio small { display: block; }
+.themelab_review_studio small { margin-top: 2px; opacity: .82; }
+.themelab_review_studio em { font-size: .8em; font-style: normal; white-space: nowrap; opacity: .72; }
+.themelab_review_publish_panel { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.themelab_review_publish_panel h3 { margin: 0 0 5px; }
+.themelab_review_publish_panel p { margin: 0; max-width: 760px; }
+.themelab_review_publish_panel .button[disabled] { cursor: not-allowed; opacity: .55; }
+@media (max-width: 900px) {
+	.themelab_review_grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+	.themelab_review_hero, .themelab_review_publish_panel { align-items: stretch; flex-direction: column; }
+	.themelab_review_status { min-width: 0; }
+	.themelab_review_studio { grid-template-columns: 30px 1fr; }
+	.themelab_review_studio em { grid-column: 2; }
+}
+
+
+/* RC5.7.0b Header background image controls */
+.themelab_header_image_panel {
+	margin: 16px 0;
+	padding: 14px;
+	border: 1px solid #d7dee5;
+	border-radius: 6px;
+	background: rgba(255,255,255,.45);
+}
+.themelab_header_image_status { display:flex; align-items:center; gap:12px; margin:12px 0; }
+.themelab_header_image_status.is_empty img { display:none; }
+.themelab_header_image_status img { width:120px; height:64px; object-fit:cover; border:1px solid #c7d0d8; border-radius:4px; }
+.themelab_header_image_options { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; margin-top:14px; }
+.themelab_header_image_options label { display:flex; flex-direction:column; gap:6px; }
+@media (max-width: 700px) { .themelab_header_image_options { grid-template-columns:1fr; } }
+
+/* RC5.7.0b Header image focal-point controls */
+.themelab_header_focal_controls { margin-top: 14px; padding-top: 12px; border-top: 1px solid #d7dee5; }
+.themelab_header_focal_controls input[type="range"] { width: 100%; margin: 2px 0 10px; }
+
+
+/* RC5.7.0e - Preview architecture alignment.
+ * Buttons Studio exclusively paints navigation button states. Header and
+ * Navigation Studios may arrange those buttons, but may not clear their fill.
+ */
+.themelab_mini_forum .themelab_preview_header .themelab_preview_navigation a {
+	box-sizing: border-box;
+	background-color: var(--themelab-header-button-bg);
+	background-image: none;
+	color: var(--themelab-header-button-text);
+	border: var(--themelab-button-border-width) solid var(--themelab-header-button-border);
+	border-radius: var(--themelab-navigation-radius);
+	padding: var(--themelab-navigation-padding-y) var(--themelab-navigation-padding-x);
+}
+
+.themelab_mini_forum .themelab_preview_header .themelab_preview_navigation a.is_normal_sample {
+	background-color: var(--themelab-header-button-bg);
+	color: var(--themelab-header-button-text);
+	border-color: var(--themelab-header-button-border);
+	box-shadow: none;
+}
+
+.themelab_mini_forum .themelab_preview_header .themelab_preview_navigation a.is_hover_sample,
+.themelab_mini_forum .themelab_preview_header .themelab_preview_navigation a.is_hover_sample:hover,
+.themelab_mini_forum .themelab_preview_header .themelab_preview_navigation a.is_hover_sample:focus-visible {
+	background-color: var(--themelab-header-button-hover-bg);
+	color: var(--themelab-header-button-hover-text);
+	border-color: var(--themelab-header-button-hover-bg);
+	box-shadow: none;
+}
+
+.themelab_mini_forum .themelab_preview_header .themelab_preview_navigation a.is_current_sample,
+.themelab_mini_forum[data-navigation-active] .themelab_preview_header .themelab_preview_navigation a.is_current_sample {
+	background-color: var(--themelab-header-button-current-bg);
+	color: var(--themelab-header-button-current-text);
+	border-color: var(--themelab-header-button-current-bg);
+	box-shadow: none;
+	border-radius: var(--themelab-navigation-radius);
+}
+
+.themelab_mini_forum .themelab_preview_footer_navigation a {
+	box-sizing: border-box;
+}
+
+.themelab_mini_forum[data-footer-navigation-style="buttons"] .themelab_preview_footer_navigation a.is_normal_sample {
+	background-color: var(--themelab-footer-button-bg);
+	color: var(--themelab-footer-button-text);
+	border-color: var(--themelab-footer-button-border);
+}
+
+.themelab_mini_forum[data-footer-navigation-style="buttons"] .themelab_preview_footer_navigation a.is_hover_sample,
+.themelab_mini_forum[data-footer-navigation-style="buttons"] .themelab_preview_footer_navigation a.is_hover_sample:hover,
+.themelab_mini_forum[data-footer-navigation-style="buttons"] .themelab_preview_footer_navigation a.is_hover_sample:focus-visible {
+	background-color: var(--themelab-footer-button-hover-bg);
+	color: var(--themelab-footer-button-hover-text);
+	border-color: var(--themelab-footer-button-hover-bg);
+}
+
+.themelab_mini_forum[data-footer-navigation-style="buttons"] .themelab_preview_footer_navigation a.is_current_sample {
+	background-color: var(--themelab-footer-button-current-bg);
+	color: var(--themelab-footer-button-current-text);
+	border-color: var(--themelab-footer-button-current-bg);
+}
+
+/* RC6.0.3 Publish Studio */
+.themelab_publish_hero{display:flex;justify-content:space-between;align-items:center;gap:24px;padding:24px;border-left:5px solid #8a8f98}.themelab_publish_hero.is_ready{border-left-color:#2f8f46}.themelab_publish_hero.needs_attention{border-left-color:#b36b00}.themelab_publish_hero h2{margin:.25rem 0}.themelab_publish_score{text-align:right}.themelab_publish_score strong,.themelab_publish_score span{display:block}.themelab_publish_grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;margin-top:18px}.themelab_publish_panel{padding:18px}.themelab_publish_checks{display:grid;gap:8px}.themelab_publish_check{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border:1px solid var(--tl-border,#d5d9dd);border-radius:6px}.themelab_publish_check.is_pass{border-left:4px solid #2f8f46}.themelab_publish_check.is_fail{border-left:4px solid #b33a3a}.themelab_publish_check_icon{font-size:1.15rem;font-weight:700}.themelab_publish_check small,.themelab_publish_option small{display:block;margin-top:3px;opacity:.75}.themelab_publish_option{display:flex;gap:10px;align-items:flex-start;padding:11px 0;border-bottom:1px solid var(--tl-border,#e2e5e8)}.themelab_publish_option input{margin-top:4px}.themelab_publish_structure{margin-top:16px}.themelab_publish_structure pre{overflow:auto;padding:14px;border:1px solid var(--tl-border,#d5d9dd);border-radius:6px;background:var(--tl-surface-alt,#f6f7f8);color:var(--tl-text,#243447);line-height:1.5}.themelab_publish_action{display:grid;gap:12px;margin-top:18px;padding-top:16px;border-top:1px solid var(--tl-border,#d5d9dd)}.themelab_publish_action.is_published{padding:16px;border:1px solid #b8d9bf;border-radius:7px;background:#f3fbf5}.themelab_publish_action_buttons{display:flex;align-items:center;flex-wrap:wrap;gap:12px}.themelab_publish_action_help{margin:0;opacity:.82}.themelab_publish_button{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;min-width:150px;padding:.65em 1.25em;white-space:nowrap;font-weight:700}.themelab_publish_button.is_complete{opacity:.72;cursor:default}.themelab_publish_download_button{font-weight:700}.themelab_publish_success_summary{display:grid;gap:3px}.themelab_publish_success_summary strong{font-size:1.05rem;color:#246d37}.themelab_publish_success_summary span,.themelab_publish_success_summary small{display:block}@media(max-width:900px){.themelab_publish_grid{grid-template-columns:1fr}.themelab_publish_hero{align-items:flex-start}.themelab_publish_score{text-align:left}}@media(max-width:520px){.themelab_publish_action_buttons{align-items:stretch;flex-direction:column}.themelab_publish_button{width:100%}}
+
+/* RC6.0.6 Publisher build pipeline */
+.themelab_publish_pipeline{padding:20px;margin-bottom:18px}.themelab_publish_pipeline_header{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;padding-bottom:16px;border-bottom:1px solid var(--tl-border,#d5d9dd)}.themelab_publish_pipeline_header h3{margin:.25rem 0 0}.themelab_publish_pipeline_result{padding:7px 11px;border-radius:999px;font-size:.88rem;white-space:nowrap}.themelab_publish_pipeline_result.is_pass{color:#246d37;background:#e7f5ea}.themelab_publish_pipeline_result.is_fail{color:#8a2424;background:#f9e8e8}.themelab_publish_pipeline_steps{display:grid;gap:9px;margin-top:16px}.themelab_publish_pipeline_step{display:grid;grid-template-columns:28px minmax(0,1fr);gap:10px;align-items:start;padding:11px 13px;border:1px solid var(--tl-border,#d5d9dd);border-radius:7px;background:var(--tl-surface,#fff);color:var(--tl-text,#243447)}.themelab_publish_pipeline_step.is_pass{border-left:4px solid #2f8f46}.themelab_publish_pipeline_step.is_fail{border-left:4px solid #b33a3a}.themelab_publish_pipeline_icon{display:flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;font-weight:800}.themelab_publish_pipeline_step.is_pass .themelab_publish_pipeline_icon{color:#246d37;background:#e7f5ea}.themelab_publish_pipeline_step.is_fail .themelab_publish_pipeline_icon{color:#8a2424;background:#f9e8e8}.themelab_publish_pipeline-step strong{display:block}.themelab_publish_pipeline_step ul{display:flex;flex-wrap:wrap;gap:4px 18px;margin:5px 0 0;padding-left:18px;opacity:.8}.themelab_publish_pipeline_step li{min-width:180px}.themelab_publish_metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:16px}.themelab_publish_metrics span{display:grid;gap:2px;padding:12px;border:1px solid var(--tl-border,#d5d9dd);border-radius:7px;text-align:center}.themelab_publish_metrics strong{font-size:1.15rem}.themelab_publish_metrics span{font-size:.86rem}@media(max-width:700px){.themelab_publish_pipeline_header{display:grid}.themelab_publish_pipeline_result{justify-self:start}.themelab_publish_metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.themelab_publish_pipeline_step ul{display:block}}
+
+/* RC6.1.20a — Studio Polish Foundation
+ * Theme Lab's authoring UI is intentionally scoped away from the generated
+ * forum theme. These rules keep controls inside their cards and ensure the
+ * live preview consumes the selected foreground tokens without Curve2
+ * overriding them. */
+.themelab_workspace_window,
+.themelab_workspace_window *,
+.themelab_mini_forum,
+.themelab_mini_forum * {
+	box-sizing: border-box;
+}
+
+.themelab_studio_layout,
+.themelab_studio_controls,
+.themelab_button_grid,
+.themelab_layout_panel,
+.themelab_navigation_color_grid,
+.themelab_navigation_color_grid label,
+.themelab_navigation_color_control {
+	min-width: 0;
+}
+
+.themelab_layout_panel input:not([type="checkbox"]):not([type="radio"]):not([type="color"]),
+.themelab_layout_panel select,
+.themelab_layout_panel textarea {
+	max-width: 100%;
+}
+
+.themelab_layout_panel > select {
+	width: 100%;
+}
+
+.themelab_number_control {
+	min-width: 0;
+}
+
+.themelab_number_control input[type="number"] {
+	min-width: 0;
+	max-width: 100%;
+	flex: 1 1 auto;
+}
+
+.themelab_navigation_color_grid label {
+	width: 100%;
+}
+
+.themelab_navigation_color_grid label > span:first-child {
+	min-width: 0;
+	overflow-wrap: anywhere;
+}
+
+.themelab_navigation_color_control {
+	flex: 0 1 auto;
+	max-width: 100%;
+}
+
+.themelab_navigation_color_grid input[type="color"] {
+	flex: 0 0 48px;
+	width: 48px;
+}
+
+.themelab_navigation_color_grid .themelab_color_hex {
+	flex: 1 1 78px;
+	min-width: 0;
+	width: 78px;
+	max-width: 92px;
+}
+
+/* A two-column color grid cannot fit beside the 500px preview column on the
+ * standard SMF admin frame. Collapse it before controls begin escaping cards. */
+@media (max-width: 1200px) {
+	.themelab_studio_controls .themelab_navigation_color_grid {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}
+
+/* Preview foreground ownership: host-theme anchor/button rules must not win. */
+.themelab_mini_forum .themelab_demo_button.is_primary,
+.themelab_mini_forum .themelab_demo_button.is_primary:hover,
+.themelab_mini_forum .themelab_demo_button.is_primary:focus,
+.themelab_mini_forum .themelab_demo_button.is_primary:active {
+	color: var(--themelab-button-primary-text, #fff) !important;
+}
+
+.themelab_mini_forum .themelab_demo_button.is_secondary,
+.themelab_mini_forum .themelab_demo_button.is_secondary:hover,
+.themelab_mini_forum .themelab_demo_button.is_secondary:focus,
+.themelab_mini_forum .themelab_demo_button.is_secondary:active {
+	color: var(--themelab-button-secondary-text, #222) !important;
+}
+
+.themelab_mini_forum .themelab_demo_button.is_danger,
+.themelab_mini_forum .themelab_demo_button.is_danger:hover,
+.themelab_mini_forum .themelab_demo_button.is_danger:focus,
+.themelab_mini_forum .themelab_demo_button.is_danger:active {
+	color: var(--themelab-button-danger-text, #fff) !important;
+}
+
+.themelab_mini_forum .themelab_demo_button:disabled {
+	color: var(--themelab-button-disabled-text, #6B7280) !important;
+}
+
+.themelab_mini_forum .themelab_preview_navigation a,
+.themelab_mini_forum .themelab_preview_navigation a:visited {
+	color: var(--themelab-header-button-text) !important;
+}
+
+.themelab_mini_forum .themelab_preview_navigation a:hover,
+.themelab_mini_forum .themelab_preview_navigation a:focus {
+	color: var(--themelab-header-button-hover-text) !important;
+}
+
+.themelab_mini_forum .themelab_preview_navigation a.is_active,
+.themelab_mini_forum .themelab_preview_navigation a.is_active:visited {
+	color: var(--themelab-header-button-current-text) !important;
+}
+
+
+/* RC6.1.20n Header Studio branding preview. */
+.themelab_preview_header {
+	position: relative;
+}
+
+.themelab_preview_smf_logo {
+	position: absolute;
+	top: 50%;
+	z-index: 4;
+	max-width: 45%;
+	transform: translateY(-50%);
+	font-size: 0.82em;
+	font-weight: 600;
+	line-height: 1.2;
+	color: inherit;
+	pointer-events: none;
+}
+
+.themelab_preview_header[data-smf-logo-visibility="hide"] .themelab_preview_smf_logo {
+	display: none;
+}
+
+.themelab_preview_header[data-smf-logo-position="left"] .themelab_preview_smf_logo {
+	left: 14px;
+	right: auto;
+	text-align: left;
+}
+
+.themelab_preview_header[data-smf-logo-position="center"] .themelab_preview_smf_logo {
+	left: 50%;
+	right: auto;
+	transform: translate(-50%, -50%);
+	text-align: center;
+}
+
+.themelab_preview_header[data-smf-logo-position="right"] .themelab_preview_smf_logo {
+	left: auto;
+	right: 14px;
+	text-align: right;
+}
+
+/* RC6.1.21 Theme Workspace Foundation. */
+.windowbg.themelab_workspace_intro {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 20px;
+	flex-wrap: wrap;
+	margin-bottom: 0 !important;
+}
+
+.themelab_workspace_intro p {
+	margin: 0.25em 0;
+}
+
+.themelab_workspace_lead {
+	font-size: 1.05em;
+	font-weight: 600;
+}
+
+.themelab_workspace_actions,
+.themelab_workspace_row_actions {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	flex-wrap: wrap;
+}
+
+.themelab_workspace_grid {
+	display: grid;
+	grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+	gap: 18px;
+	align-items: start;
+	margin-top: 18px;
+}
+
+.themelab_workspace_primary,
+.themelab_workspace_secondary {
+	min-width: 0;
+}
+
+.themelab_workspace_primary input[type="text"],
+.themelab_workspace_primary select,
+.themelab_workspace_primary textarea,
+.themelab_workspace_secondary input[type="file"] {
+	box-sizing: border-box;
+	max-width: 100%;
+}
+
+.themelab_workspace_secondary input[type="file"] {
+	width: 100%;
+}
+
+.themelab_workspace_import_action {
+	margin-top: 12px;
+	text-align: right;
+}
+
+.themelab_saved_workspaces_header {
+	margin-top: 18px;
+}
+
+.themelab_workspace_list {
+	display: grid;
+	gap: 10px;
+}
+
+.themelab_workspace_row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 18px;
+	padding: 12px 14px;
+	border: 1px solid rgba(0, 0, 0, 0.12);
+	border-radius: 6px;
+	box-sizing: border-box;
+}
+
+.themelab_workspace_row.is_active {
+	border-width: 2px;
+}
+
+.themelab_workspace_identity {
+	min-width: 0;
+}
+
+.themelab_workspace_badge {
+	display: inline-block;
+	margin-left: 6px;
+	padding: 2px 7px;
+	border-radius: 999px;
+	font-size: 0.78em;
+	font-weight: 700;
+	vertical-align: middle;
+}
+
+.themelab_workspace_row_actions form {
+	margin: 0;
+}
+
+@media (max-width: 950px) {
+	.themelab_workspace_grid {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.themelab_workspace_row {
+		align-items: flex-start;
+		flex-direction: column;
+	}
+}
+
+
+/* RC6.1.21cm — Workspace junction hard stop.
+ * Prevent active/published themes from reopening vertical space between
+ * the intro surface and the two workspace column headers. */
+.themelab_workspace_grid > .themelab_workspace_primary > .cat_bar,
+.themelab_workspace_grid > .themelab_workspace_secondary > .cat_bar {
+	margin-top: 0 !important;
+}
+
+/* RC6.1.21cm — Workspace section spacing: preserve joined table headers/bodies while restoring breathing room between workspace surfaces. */
+
+/* RC6.1.21c Connected Surface Polish.
+ * Current Workspace is one surface: title owns top corners, editor owns bottom corners.
+ */
+/* RC6.1.21cm — Workspace form-wrapped card join.
+ * Current Workspace is cat_bar > form > windowbg, so Curve2/generated-theme
+ * adjacent-sibling card rules cannot see the body. Own this junction explicitly. */
+.themelab_workspace_primary > .cat_bar {
+	margin-bottom: 0 !important;
+	border-bottom: 0 !important;
+	border-bottom-left-radius: 0 !important;
+	border-bottom-right-radius: 0 !important;
+}
+.themelab_workspace_primary > form {
+	display: block;
+	margin: 0 !important;
+	padding: 0 !important;
+}
+.themelab_workspace_primary > form > .windowbg {
+	margin-top: 0 !important;
+	border-top: 0 !important;
+	border-top-left-radius: 0 !important;
+	border-top-right-radius: 0 !important;
+}
+
+
+/* RC6.1.21at — Active Navigation States
+   Theme Lab's own Admin pages should always show where the administrator is. */
+body.action_admin .generic_menu > .dropmenu > li > a.active,
+body.action_admin .generic_menu > .dropmenu > li > a.chosen,
+body.action_admin #adm_submenus .generic_menu .dropmenu > li > a.active,
+body.action_admin #adm_submenus .generic_menu .dropmenu > li > a.chosen {
+    background: var(--tl-primary, #3465a4) !important;
+    color: var(--tl-button-primary-text, #fff) !important;
+    border: 1px solid var(--tl-primary, #3465a4) !important;
+    border-radius: 5px !important;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .16) !important;
+    text-decoration: none !important;
+}
+
+
+/* RC6.1.21bd — Monospace live-preview ownership. */
+.themelab_mini_forum .themelab_preview_code {
+	font-family: var(--themelab-preview-monospace, Consolas, Monaco, monospace) !important;
+}
+
+/* RC6.1.21bd — Typography acceptance and Theme Review cleanup. */
+.themelab_mini_forum .themelab_preview_board_header .themelab_preview_heading,
+.themelab_mini_forum .themelab_preview_topic_header .themelab_preview_heading,
+.themelab_mini_forum .themelab_preview_form_heading {
+	font-weight: var(--themelab-preview-heading-weight, 700) !important;
+}
+.themelab_preview_code {
+	display: block;
+	margin-top: 8px;
+	padding: 9px 11px;
+	font-size: 1em;
+	letter-spacing: .01em;
+	white-space: normal;
+}
+.themelab_review_panel {
+	display: flex;
+	flex-direction: column;
+}
+.themelab_review_panel_actions {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+	margin-top: auto;
+	padding-top: 16px;
+}
+.themelab_review_panel_actions.is_right {
+	justify-content: flex-end;
+}
+
+/* RC6.1.21bd: Board Row Background uses the same readable picker + HEX pattern as other Studio colors. */
+.themelab_board_row_color {
+	display: block;
+	width: 100%;
+}
+.themelab_board_row_color label {
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	gap: 7px;
+	width: 100%;
+	box-sizing: border-box;
+}
+.themelab_board_row_color .themelab_navigation_color_control {
+	display: grid;
+	grid-template-columns: 48px minmax(110px, 1fr);
+	gap: 8px;
+	width: 100%;
+	max-width: 220px;
+}
+.themelab_board_row_color .themelab_color_hex {
+	width: 100%;
+	max-width: none;
+	min-width: 110px;
+	box-sizing: border-box;
+}
+
+
+/* RC6.1.21cm — Board Index Stats Card Style #1 preview parity. */
+.themelab_preview_board_counts {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) 1px minmax(0, 1fr);
+	align-items: center;
+	gap: 8px;
+	min-width: 180px;
+	padding: 8px 9px;
+	border: 1px solid color-mix(in srgb, var(--themelab-preview-border) 88%, var(--themelab-preview-primary) 12%);
+	border-radius: 9px;
+	background: color-mix(in srgb, var(--themelab-preview-surface-alt) 92%, var(--themelab-preview-primary) 8%);
+	box-shadow: 0 2px 7px rgba(0, 0, 0, 0.08);
+}
+.themelab_preview_stat {
+	display: grid;
+	grid-template-columns: 2.15em 3.6em;
+	align-items: center;
+	justify-content: center;
+	gap: 0.45em;
+	width: 6.2em;
+	min-width: 6.2em;
+}
+.themelab_preview_stat_icon {
+	display: grid;
+	place-items: center;
+	width: 2.15em;
+	height: 2.15em;
+	border: 1px solid color-mix(in srgb, var(--themelab-preview-primary) 72%, var(--themelab-preview-border));
+	border-radius: 50%;
+	background: color-mix(in srgb, var(--themelab-preview-primary) 18%, transparent);
+	color: var(--themelab-preview-primary);
+}
+.themelab_preview_stat_topics .themelab_preview_stat_icon {
+	border-color: color-mix(in srgb, var(--themelab-preview-accent) 72%, var(--themelab-preview-border));
+	background: color-mix(in srgb, var(--themelab-preview-accent) 18%, transparent);
+	color: var(--themelab-preview-accent);
+}
+.themelab_preview_stat_icon svg {
+	width: 16px;
+	height: 16px;
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 1.8;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+.themelab_preview_stat_copy {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 3.6em;
+	min-width: 3.6em;
+	text-align: center;
+	line-height: 1;
+}
+.themelab_preview_stat_label {
+	display: block;
+	width: 100%;
+	margin-bottom: 0.18em;
+	color: var(--themelab-board-stats-text);
+	font-size: 0.72em;
+	font-weight: 700;
+	line-height: 1;
+	letter-spacing: 0.025em;
+	text-align: center;
+	text-transform: uppercase;
+}
+.themelab_preview_stat strong {
+	display: block;
+	width: 100%;
+	color: var(--themelab-preview-primary);
+	font-size: 1.08em;
+	font-weight: 700;
+	line-height: 1;
+	text-align: center;
+}
+.themelab_preview_stat_topics strong {
+	color: var(--themelab-preview-accent);
+}
+.themelab_preview_stat_divider {
+	align-self: stretch;
+	width: 1px;
+	min-height: 38px;
+	background: color-mix(in srgb, var(--themelab-preview-border) 82%, var(--themelab-preview-primary) 18%);
+}
+
+
+/* RC6.1.21cn — Preview Authority Recovery */
+.themelab_studio_preview { display: contents; }
+.themelab_gradient_sample.is_disabled { opacity: .55; }
+
+/* RC6.1.21cq — Sticky Preview Scroll-Container Authority
+ * Gradient Studio is the first Studio whose shared preview lives inside
+ * .windowbg.themelab_workspace_window. Curve2/custom Theme Lab themes may
+ * assign overflow to .windowbg, which silently turns that non-scrolling
+ * ancestor into the sticky containing block and cages the preview in place.
+ * Theme Lab's authoring workspace must own this behavior regardless of the
+ * currently active/generated forum theme. */
+.windowbg.themelab_workspace_window,
+.themelab_workspace_window {
+	overflow: visible !important;
+	overflow-x: visible !important;
+	overflow-y: visible !important;
+	contain: none !important;
+}
+
+.themelab_workspace_window > .themelab_studio_layout,
+.themelab_studio_layout > .themelab_preview_column {
+	overflow: visible !important;
+}
+
+.themelab_studio_layout > .themelab_preview_column {
+	position: -webkit-sticky !important;
+	position: sticky !important;
+	top: 12px !important;
+	align-self: start !important;
+	height: fit-content;
+}
+
+@media (max-width: 900px) {
+	.themelab_studio_layout > .themelab_preview_column {
+		position: static !important;
+		top: auto !important;
+	}
+}
+
+
+/* RC6.1.21cq: Header Studio preview-layer authority. */
+.themelab_preview_header_artwork {
+	background-position: 50% 50%;
+	background-size: cover;
+}
+
+
+/* RC6.1.21cq: Logo safety + preview/publish parity. */
+.themelab_logo_rendered_size {
+	margin-top: 7px;
+	font-weight: 600;
+}
+
+.themelab_logo_safety_note {
+	margin-top: 7px;
+	padding: 8px 10px;
+	border-left: 3px solid currentColor;
+	opacity: .82;
+}
+
+.themelab_preview_header[data-logo-alignment="left"] .themelab_preview_logo_image {
+	margin-left: 0;
+	margin-right: auto;
+}
+
+.themelab_preview_header[data-logo-alignment="center"] .themelab_preview_logo_image {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.themelab_preview_header[data-logo-alignment="right"] .themelab_preview_logo_image {
+	margin-left: auto;
+	margin-right: 0;
+}
+
+
+/* RC6.1.21dl: Palette Studio ownership boundary. */
+.themelab_palette_authority_note { margin:10px 0 16px; padding:9px 11px; border-left:3px solid var(--themelab-preview-primary,#3465A4); }
+
+
+/* RC6.1.21dl: Active pagination needs no decorative brackets. */
+.themelab_preview_pagination .current_page::before,
+.themelab_preview_pagination .current_page::after {
+	content: none !important;
+	display: none !important;
+}
+
+
+/* RC6.1.21dl: Gradient Studio authority + inactive-state clarity. */
+.themelab_gradient_state {
+	margin: -5px 0 12px;
+	font-size: .9em;
+	font-weight: 600;
+	opacity: .78;
+}
+
+.themelab_gradient_state.is_inactive {
+	font-weight: 500;
+	opacity: .68;
+}
+
+.themelab_gradient_surface.is_gradient_inactive .themelab_gradient_fields {
+	opacity: .84;
+}
+
+.themelab_gradient_surface.is_gradient_inactive .themelab_gradient_fields::before {
+	content: "";
+}
+
+.themelab_gradient_surface .themelab_color_hex[aria-invalid="true"] {
+	outline: 2px solid currentColor;
+	outline-offset: 1px;
+}
+
+
+/* RC6.1.21dl: Integrated Header Utilities prototype. */
+.themelab_preview_utility_lane {
+	display: none;
+	align-items: center;
+	gap: 8px;
+	width: 100%;
+	box-sizing: border-box;
+	margin: 0 0 8px;
+	font-size: .78em;
+	line-height: 1;
+}
+.themelab_preview_header[data-utility-mode="integrated"] .themelab_preview_utility_lane { display:flex; }
+.themelab_preview_header[data-utility-resolved="left"] .themelab_preview_utility_lane { justify-content:flex-start; }
+.themelab_preview_header[data-utility-resolved="right"] .themelab_preview_utility_lane { justify-content:flex-end; }
+.themelab_preview_utility_lane > span {
+	display:inline-flex;
+	align-items:center;
+	gap:3px;
+	padding:5px 7px;
+	border:1px solid color-mix(in srgb,currentColor 30%,transparent);
+	border-radius:999px;
+	background:color-mix(in srgb,currentColor 10%,transparent);
+}
+.themelab_preview_utility_lane b { font-size:.85em; }
+.themelab_preview_header[data-utility-mode="integrated"] .themelab_preview_search { order:0; }
+@media (max-width:720px) {
+	.themelab_preview_utility_lane { flex-wrap:wrap; gap:5px; }
+}
+
+/* 1.0.1-dev14 — Mini-forum host-theme isolation / link-state authority.
+ *
+ * Theme Lab's preview lives inside the currently active SMF theme, so any
+ * forum-theme anchor rule (especially :visited) can otherwise recolor preview
+ * links. The preview owns every link state explicitly here. Specialist
+ * navigation/footer/pagination samples are reasserted after the generic rule.
+ */
+.themelab_mini_forum .themelab_preview_breadcrumb a,
+.themelab_mini_forum .themelab_preview_breadcrumb a:link,
+.themelab_mini_forum .themelab_preview_breadcrumb a:visited,
+.themelab_mini_forum .themelab_preview_board_link,
+.themelab_mini_forum .themelab_preview_board_link:link,
+.themelab_mini_forum .themelab_preview_board_link:visited,
+.themelab_mini_forum .themelab_preview_post_actions a,
+.themelab_mini_forum .themelab_preview_post_actions a:link,
+.themelab_mini_forum .themelab_preview_post_actions a:visited,
+.themelab_mini_forum .themelab_preview_board_details a,
+.themelab_mini_forum .themelab_preview_board_details a:link,
+.themelab_mini_forum .themelab_preview_board_details a:visited,
+.themelab_mini_forum .themelab_preview_last_post a,
+.themelab_mini_forum .themelab_preview_last_post a:link,
+.themelab_mini_forum .themelab_preview_last_post a:visited {
+	color: var(--themelab-preview-link) !important;
+	-webkit-text-fill-color: var(--themelab-preview-link) !important;
+}
+
+.themelab_mini_forum .themelab_preview_breadcrumb a:hover,
+.themelab_mini_forum .themelab_preview_breadcrumb a:focus,
+.themelab_mini_forum .themelab_preview_breadcrumb a:active,
+.themelab_mini_forum .themelab_preview_board_link:hover,
+.themelab_mini_forum .themelab_preview_board_link:focus,
+.themelab_mini_forum .themelab_preview_board_link:active,
+.themelab_mini_forum .themelab_preview_post_actions a:hover,
+.themelab_mini_forum .themelab_preview_post_actions a:focus,
+.themelab_mini_forum .themelab_preview_post_actions a:active,
+.themelab_mini_forum .themelab_preview_board_details a:hover,
+.themelab_mini_forum .themelab_preview_board_details a:focus,
+.themelab_mini_forum .themelab_preview_board_details a:active,
+.themelab_mini_forum .themelab_preview_last_post a:hover,
+.themelab_mini_forum .themelab_preview_last_post a:focus,
+.themelab_mini_forum .themelab_preview_last_post a:active {
+	color: var(--themelab-preview-link-hover, var(--themelab-preview-link)) !important;
+	-webkit-text-fill-color: var(--themelab-preview-link-hover, var(--themelab-preview-link)) !important;
+}
+
+/* Palette Studio's explicit state samples must never be replaced by browser history. */
+.themelab_mini_forum .themelab_preview_link_states .is_normal,
+.themelab_mini_forum .themelab_preview_link_states .is_normal:link,
+.themelab_mini_forum .themelab_preview_link_states .is_normal:visited {
+	color: var(--themelab-preview-link) !important;
+	-webkit-text-fill-color: var(--themelab-preview-link) !important;
+}
+.themelab_mini_forum .themelab_preview_link_states .is_hover,
+.themelab_mini_forum .themelab_preview_link_states .is_hover:link,
+.themelab_mini_forum .themelab_preview_link_states .is_hover:visited,
+.themelab_mini_forum .themelab_preview_link_states .is_hover:hover,
+.themelab_mini_forum .themelab_preview_link_states .is_hover:focus {
+	color: var(--themelab-preview-link-hover, var(--themelab-preview-link)) !important;
+	-webkit-text-fill-color: var(--themelab-preview-link-hover, var(--themelab-preview-link)) !important;
+}
+.themelab_mini_forum .themelab_preview_link_states .is_visited,
+.themelab_mini_forum .themelab_preview_link_states .is_visited:link,
+.themelab_mini_forum .themelab_preview_link_states .is_visited:visited {
+	color: var(--themelab-preview-link-visited, var(--themelab-preview-link)) !important;
+	-webkit-text-fill-color: var(--themelab-preview-link-visited, var(--themelab-preview-link)) !important;
+}
+
+/* Breadcrumb "bar" mode intentionally owns a high-contrast foreground. */
+.themelab_mini_forum[data-breadcrumb-style="bar"] .themelab_preview_breadcrumb a,
+.themelab_mini_forum[data-breadcrumb-style="bar"] .themelab_preview_breadcrumb a:link,
+.themelab_mini_forum[data-breadcrumb-style="bar"] .themelab_preview_breadcrumb a:visited,
+.themelab_mini_forum[data-breadcrumb-style="bar"] .themelab_preview_breadcrumb a:hover,
+.themelab_mini_forum[data-breadcrumb-style="bar"] .themelab_preview_breadcrumb a:focus {
+	color: #fff !important;
+	-webkit-text-fill-color: #fff !important;
+}
+
+/* Header navigation has its own Buttons Studio palette. */
+.themelab_mini_forum .themelab_preview_header .themelab_preview_navigation a,
+.themelab_mini_forum .themelab_preview_header .themelab_preview_navigation a:link,
+.themelab_mini_forum .themelab_preview_header .themelab_preview_navigation a:visited {
+	color: var(--themelab-header-button-text) !important;
+	-webkit-text-fill-color: var(--themelab-header-button-text) !important;
+}
+.themelab_mini_forum .themelab_preview_header .themelab_preview_navigation a.is_hover_sample,
+.themelab_mini_forum .themelab_preview_header .themelab_preview_navigation a.is_hover_sample:visited,
+.themelab_mini_forum .themelab_preview_header .themelab_preview_navigation a.is_hover_sample:hover,
+.themelab_mini_forum .themelab_preview_header .themelab_preview_navigation a.is_hover_sample:focus {
+	color: var(--themelab-header-button-hover-text) !important;
+	-webkit-text-fill-color: var(--themelab-header-button-hover-text) !important;
+}
+.themelab_mini_forum .themelab_preview_header .themelab_preview_navigation a.is_current_sample,
+.themelab_mini_forum .themelab_preview_header .themelab_preview_navigation a.is_current_sample:visited {
+	color: var(--themelab-header-button-current-text) !important;
+	-webkit-text-fill-color: var(--themelab-header-button-current-text) !important;
+}
+
+/* Footer navigation has its own state palette and is also insulated. */
+.themelab_mini_forum[data-footer-navigation-style="text"] .themelab_preview_footer_navigation a,
+.themelab_mini_forum[data-footer-navigation-style="text"] .themelab_preview_footer_navigation a:link,
+.themelab_mini_forum[data-footer-navigation-style="text"] .themelab_preview_footer_navigation a:visited {
+	color: var(--themelab-preview-footer-link) !important;
+	-webkit-text-fill-color: var(--themelab-preview-footer-link) !important;
+}
+.themelab_mini_forum[data-footer-navigation-style="buttons"] .themelab_preview_footer_navigation a,
+.themelab_mini_forum[data-footer-navigation-style="buttons"] .themelab_preview_footer_navigation a:link,
+.themelab_mini_forum[data-footer-navigation-style="buttons"] .themelab_preview_footer_navigation a:visited {
+	color: var(--themelab-footer-button-text) !important;
+	-webkit-text-fill-color: var(--themelab-footer-button-text) !important;
+}
+.themelab_mini_forum[data-footer-navigation-style="buttons"] .themelab_preview_footer_navigation a.is_hover_sample,
+.themelab_mini_forum[data-footer-navigation-style="buttons"] .themelab_preview_footer_navigation a.is_hover_sample:visited {
+	color: var(--themelab-footer-button-hover-text) !important;
+	-webkit-text-fill-color: var(--themelab-footer-button-hover-text) !important;
+}
+.themelab_mini_forum[data-footer-navigation-style="buttons"] .themelab_preview_footer_navigation a.is_current_sample,
+.themelab_mini_forum[data-footer-navigation-style="buttons"] .themelab_preview_footer_navigation a.is_current_sample:visited {
+	color: var(--themelab-footer-button-current-text) !important;
+	-webkit-text-fill-color: var(--themelab-footer-button-current-text) !important;
+}
+
+/* 1.0.1-dev14a — Palette color mode selector. */
+.themelab_palette_mode_panel{margin:0 0 16px;padding:14px;border:1px solid var(--tl-border,#d5d9dd);border-radius:8px;background:var(--tl-surface-alt,#f6f7f8)}
+.themelab_palette_mode_panel>p{margin:4px 0 12px}
+.themelab_palette_mode_choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.themelab_palette_mode_choices label{display:flex;align-items:flex-start;gap:9px;margin:0;padding:11px 12px;border:1px solid var(--tl-border,#d5d9dd);border-radius:7px;background:var(--tl-surface,#fff);cursor:pointer}
+.themelab_palette_mode_choices input{margin-top:3px}
+.themelab_palette_mode_choices span,.themelab_palette_mode_choices strong,.themelab_palette_mode_choices small{display:block}
+.themelab_palette_mode_choices small{margin-top:3px;opacity:.78;line-height:1.35}
+@media(max-width:700px){.themelab_palette_mode_choices{grid-template-columns:1fr}}
+
+/* 1.0.1-dev14b — Pagination host-theme isolation.
+ * Pagination anchors are real links, so the active forum theme's :visited
+ * palette must not recolor them inside Theme Lab's mini-forum preview.
+ */
+.themelab_mini_forum .themelab_preview_pagination a,
+.themelab_mini_forum .themelab_preview_pagination a:link,
+.themelab_mini_forum .themelab_preview_pagination a:visited {
+	color: var(--themelab-preview-link) !important;
+	-webkit-text-fill-color: var(--themelab-preview-link) !important;
+}
+.themelab_mini_forum .themelab_preview_pagination a:hover,
+.themelab_mini_forum .themelab_preview_pagination a:focus,
+.themelab_mini_forum .themelab_preview_pagination a:active {
+	color: var(--themelab-preview-link-hover, var(--themelab-preview-link)) !important;
+	-webkit-text-fill-color: var(--themelab-preview-link-hover, var(--themelab-preview-link)) !important;
+}
+.themelab_mini_forum[data-pagination-active="filled"] .themelab_preview_pagination .current_page {
+	color: var(--themelab-button-primary-text,#fff) !important;
+	-webkit-text-fill-color: var(--themelab-button-primary-text,#fff) !important;
+}
+.themelab_mini_forum[data-pagination-active="outline"] .themelab_preview_pagination .current_page,
+.themelab_mini_forum[data-pagination-active="underline"] .themelab_preview_pagination .current_page {
+	color: var(--themelab-preview-primary) !important;
+	-webkit-text-fill-color: var(--themelab-preview-primary) !important;
+}
+
+/* 1.0.1-dev14e — Header/Footer button color suggestions. */
+.themelab_button_suggestion_bar{
+	display:flex;
+	align-items:center;
+	gap:10px;
+	flex-wrap:wrap;
+	margin:0 0 12px;
+	padding:10px;
+	border:1px solid var(--tl-border,#d5d9dd);
+	border-radius:7px;
+	background:var(--tl-surface-alt,#f6f7f8);
+}
+.themelab_button_suggestion_bar .button{
+	flex:0 0 auto;
+	margin:0!important;
+}
+.themelab_button_suggestion_bar .smalltext{
+	flex:1 1 220px;
+	line-height:1.35;
+	opacity:.8;
+}
+

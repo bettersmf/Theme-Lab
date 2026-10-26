@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<!DOCTYPE package-info SYSTEM "https://www.simplemachines.org/xml/package-info">
+
+<package-info xmlns="https://www.simplemachines.org/xml/package-info" type="modification" id="better-smf:themelab">
+	<id>better-smf:themelab</id>
+	<name>Theme Lab</name>
+	<version>1.0.2</version>
+	<type>modification</type>
+
+	<install for="2.1 - 2.1.99">
+		<readme type="inline"><![CDATA[
+Theme Lab 1.0.2
+
+After installation:
+1. Open Administration Center > Configuration > Theme Lab.
+2. Run Environment Check.
+3. Create a new Workspace, or import a Theme Lab workspace/theme.
+4. Work through the Studios and use the live preview while designing.
+5. Open Review to check the completed design.
+6. Open Publish to build the finished SMF theme package.
+
+Uninstalling always removes Theme Lab files, hooks, and runtime settings. In SMF Package Manager, leave the database-removal option unchecked to preserve saved Workspaces for a later reinstall. Enable database removal only when you deliberately want to delete Theme Lab Workspace data. Published themes are independent and are not removed with Theme Lab.
+        ]]></readme>
+
+		<require-file name="Sources/ThemeLab.php" destination="$sourcedir" />
+		<require-file name="Sources/ThemeLabProjects.php" destination="$sourcedir" />
+		<require-file name="Sources/ThemeLabCore.php" destination="$sourcedir" />
+		<require-file name="Sources/ThemeLabPalette.php" destination="$sourcedir" />
+		<require-file name="Sources/ThemeLabGradients.php" destination="$sourcedir" />
+		<require-file name="Sources/ThemeLabPalettes.php" destination="$sourcedir" />
+		<require-file name="Sources/ThemeLabColors.php" destination="$sourcedir" />
+		<require-file name="Sources/ThemeLabLayout.php" destination="$sourcedir" />
+		<require-file name="Sources/ThemeLabTypography.php" destination="$sourcedir" />
+		<require-file name="Sources/ThemeLabButtons.php" destination="$sourcedir" />
+		<require-file name="Sources/ThemeLabForms.php" destination="$sourcedir" />
+		<require-file name="Sources/ThemeLabNavigation.php" destination="$sourcedir" />
+		<require-file name="Sources/ThemeLabBoardIndex.php" destination="$sourcedir" />
+		<require-file name="Sources/ThemeLabHeader.php" destination="$sourcedir" />
+		<require-file name="Sources/ThemeLabFooter.php" destination="$sourcedir" />
+		<require-file name="Sources/ThemeLabPreview.php" destination="$sourcedir" />
+		<require-file name="Sources/ThemeLabReview.php" destination="$sourcedir" />
+		<require-file name="Sources/ThemeLabPublish.php" destination="$sourcedir" />
+		<require-file name="Themes/default/ThemeLab.template.php" destination="$themedir" />
+		<require-file name="Themes/default/languages/ThemeLab.english.php" destination="$themes_dir/default/languages" />
+		<require-file name="Themes/default/css/ThemeLab.css" destination="$themedir/css" />
+		<require-file name="Themes/default/images/ThemeLab/themelab_menu.png" destination="$themes_dir/default/images/ThemeLab" />
+		<require-file name="Themes/default/scripts/ThemeLabPreview.js" destination="$themedir/scripts" />
+
+		<require-file name="Themes/default/images/admin/theme_lab.png" destination="$themes_dir/default/images/admin" />
+		<require-file name="Themes/default/images/admin/big/theme_lab.png" destination="$themes_dir/default/images/admin/big" />
+		<code>install.php</code>
+	</install>
+
+	<upgrade for="2.1 - 2.1.99" from="1.0.0-RC1,1.0.0-RC6.1.21dl,1.0.0-RC6.1.21dk,1.0.0-RC6.1.21dj,1.0.0-RC6.1.21di,1.0.0-RC6.1.21dh,1.0.0-RC6.1.21dg,1.0.0-RC6.1.21df,1.0.0-RC6.1.21de,1.0.0-RC6.1.21dd,1.0.0-RC6.1.21dc,1.0.0-RC6.1.21db,1.0.0-RC6.1.21da,1.0.0-RC6.1.21cz,1.0.0-RC6.1.21cy,1.0.0-RC6.1.21cx,1.0.0-RC6.1.21cw,1.0.0-RC6.1.21cu,1.0.0-RC6.1.21ct,1.0.0-RC6.1.21cs,1.0.0-RC6.1.21cr,1.0.0-RC6.1.21cq,1.0.0-RC6.1.21cp,1.0.0-RC6.1.21co,1.0.0-RC6.1.21cn,1.0.0-RC6.1.21cm,1.0.0,1.0.1-dev1,1.0.1-dev2,1.0.1-dev3c,1.0.1-dev3d,1.0.1-dev3e,1.0.1-dev3f,1.0.1-dev3g,1.0.1-dev3h,1.0.1-dev4,1.0.1-dev5,1.0.1-dev6,1.0.1-dev7,1.0.1-dev8,1.0.1,1.0.1-dev9,1.0.1-dev10,1.0.1-dev11,1.0.1-dev12,1.0.1-dev13,1.0.1-dev13a,1.0.1-dev13b,1.0.1-dev13c,1.0.1-dev13d,1.0.1-dev13e,1.0.1-dev13f,1.0.1-dev14,1.0.1-dev14a,1.0.1-dev14b,1.0.1-dev14c,1.0.1-dev14d,1.0.1-dev14e,1.0.1-dev14f,1.0.1-dev14g,1.0.1-dev14h,1.0.1-dev14i,1.0.1-dev14j,1.0.1-dev14k">
+		<require-file name="Sources/ThemeLab.php" destination="$sourcedir" />
+		<require-file name="Sources/ThemeLabProjects.php" destination="$sourcedir" />
+		<require-file name="Sources/ThemeLabCore.php" destination="$sourcedir" />
+		<require-file name="Sources/ThemeLabPalette.php" destination="$sourcedir" />
+		<require-file name="Sources/ThemeLabGradients.php" destination="$sourcedir" />
+		<require-file name="Sources/ThemeLabPalettes.php" destination="$sourcedir" />
+		<require-file name="Sources/ThemeLabColors.php" destination="$sourcedir" />
+		<require-file name="Sources/ThemeLabLayout.php" destination="$sourcedir" />
+		<require-file name="Sources/ThemeLabTypography.php" destination="$sourcedir" />
+		<require-file name="Sources/ThemeLabButtons.php" destination="$sourcedir" />
+		<require-file name="Sources/ThemeLabForms.php" destination="$sourcedir" />
+		<require-file name="Sources/ThemeLabNavigation.php" destination="$sourcedir" />
+		<require-file name="Sources/ThemeLabBoardIndex.php" destination="$sourcedir" />
+		<require-file name="Sources/ThemeLabHeader.php" destination="$sourcedir" />
+		<require-file name="Sources/ThemeLabFooter.php" destination="$sourcedir" />
+		<require-file name="Sources/ThemeLabPreview.php" destination="$sourcedir" />
+		<require-file name="Sources/ThemeLabReview.php" destination="$sourcedir" />
+		<require-file name="Sources/ThemeLabPublish.php" destination="$sourcedir" />
+		<require-file name="Themes/default/ThemeLab.template.php" destination="$themedir" />
+		<require-file name="Themes/default/languages/ThemeLab.english.php" destination="$themes_dir/default/languages" />
+		<require-file name="Themes/default/css/ThemeLab.css" destination="$themedir/css" />
+		<require-file name="Themes/default/images/ThemeLab/themelab_menu.png" destination="$themes_dir/default/images/ThemeLab" />
+		<require-file name="Themes/default/scripts/ThemeLabPreview.js" destination="$themedir/scripts" />
+	
+		<require-file name="Themes/default/images/admin/theme_lab.png" destination="$themes_dir/default/images/admin" />
+		<require-file name="Themes/default/images/admin/big/theme_lab.png" destination="$themes_dir/default/images/admin/big" /></upgrade>
+
+	<uninstall for="2.1 - 2.1.99">
+		<!-- SMF presents database actions as the optional data-removal step during uninstall. -->
+		<database>uninstall-database.php</database>
+		<code>uninstall.php</code>
+
+		<!-- Explicitly remove every file installed by Theme Lab. -->
+		<remove-file name="$sourcedir/ThemeLab.php" />
+		<remove-file name="$sourcedir/ThemeLabProjects.php" />
+		<remove-file name="$sourcedir/ThemeLabCore.php" />
+		<remove-file name="$sourcedir/ThemeLabPalette.php" />
+		<remove-file name="$sourcedir/ThemeLabGradients.php" />
+		<remove-file name="$sourcedir/ThemeLabPalettes.php" />
+		<remove-file name="$sourcedir/ThemeLabColors.php" />
+		<remove-file name="$sourcedir/ThemeLabLayout.php" />
+		<remove-file name="$sourcedir/ThemeLabTypography.php" />
+		<remove-file name="$sourcedir/ThemeLabButtons.php" />
+		<remove-file name="$sourcedir/ThemeLabForms.php" />
+		<remove-file name="$sourcedir/ThemeLabNavigation.php" />
+		<remove-file name="$sourcedir/ThemeLabBoardIndex.php" />
+		<remove-file name="$sourcedir/ThemeLabHeader.php" />
+		<remove-file name="$sourcedir/ThemeLabFooter.php" />
+		<remove-file name="$sourcedir/ThemeLabPreview.php" />
+		<remove-file name="$sourcedir/ThemeLabReview.php" />
+		<remove-file name="$sourcedir/ThemeLabPublish.php" />
+		<remove-file name="$themedir/ThemeLab.template.php" />
+		<remove-file name="$themes_dir/default/languages/ThemeLab.english.php" />
+		<remove-file name="$themedir/css/ThemeLab.css" />
+		<remove-file name="$themes_dir/default/images/ThemeLab/themelab_menu.png" />
+		<remove-file name="$themedir/scripts/ThemeLabPreview.js" />
+	
+		<remove-file name="$themes_dir/default/images/admin/theme_lab.png" />
+		<remove-file name="$themes_dir/default/images/admin/big/theme_lab.png" />
+	</uninstall>
+</package-info>

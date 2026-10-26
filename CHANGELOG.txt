@@ -1,0 +1,97 @@
+## 1.0.1-dev12 — True Final Main Navigation Stacking Authority
+- Removes #upper_section from the late integrated-header z-index:30 rule that was trapping primary navigation dropdowns beneath Administration secondary navigation.
+- Adds final #upper_section/main-menu stacking authority immediately before the generated CSS is returned, so no later Theme Lab rule can demote it.
+- Keeps primary dropdown panels fully opaque.
+- Republish the Theme Lab theme after upgrading.
+
+## 1.0.1-dev11 — Ancestor-Aware Main Navigation Stacking Fix
+- Raises the full primary-header ancestor stacking chain so Admin and other main-nav dropdowns cannot be covered by Administration/Profile secondary menus.
+- Fixes the case where #top_section/#upper_section remained at z-index 30 and trapped a higher-z-index submenu underneath #genericmenu.
+- Forces main-nav dropdown panels and rows to an opaque Theme Lab surface with no inherited background image.
+- Republish the Theme Lab theme after upgrading.
+
+## 1.0.1-dev10 — Main Navigation Stacking Authority
+- Prevents Theme Lab's generated CSS from demoting the primary navigation to z-index 20-23 later in the stylesheet.
+- Gives the header/main-menu stacking chain final authority over normal page content so Admin and other dropdowns remain on top.
+- Requires republishing the Theme Lab theme after upgrading so the generated theme CSS receives the fix.
+
+Theme Lab 1.0.1-dev6
+- Permanently fixes the native SMF Delete icon red-square regression in Personal Messages and other quickbutton surfaces.
+- Root cause: Theme Lab treated SMF's `remove_button` icon class as if it were a destructive button class and painted the icon span with the danger background.
+- Real moderation Delete/Remove buttons keep their semantic danger styling; the native remove glyph now stays transparent and lets its surrounding quickbutton own the background.
+- No SMF core files or delete behavior changed. Republish the generated theme after upgrading.
+
+Theme Lab 1.0.1-dev5
+- Fixed PM inbox secondary dropdowns still painting behind the Pages pagination row.
+- Root cause: SMF wraps .generic_menu in #genericmenu while PM content/pagination lives in sibling #admin_content; raising only the submenu could not escape the wrapper stacking order.
+- Theme Lab now explicitly layers #genericmenu above #admin_content and keeps PM pagination in the lower content layer.
+- Scope remains limited to generated theme CSS; no SMF core files or runtime behavior changed.
+
+Theme Lab 1.0.1-dev4
+- Fixed Personal Messages / secondary generic-menu dropdown stacking over pagination.
+- Generated themes now give .generic_menu dropdowns an explicit safe stacking context.
+- No SMF core changes.
+- Direct upgrade support from Theme Lab 1.0.1.
+
+Theme Lab 1.0.1
+- Public release package promoted from the tested 1.0.1 development line.
+- Direct upgrade support includes 1.0.1-dev3h.
+- Theme Lab no longer declares an empty BoardMod core modification.
+- SMF optional database removal now controls whether saved Workspaces are deleted during uninstall.
+- GD is optional and no longer blocks Environment Check readiness.
+- Generated-theme build/compiler metadata normalized to Theme Lab 1.0.1.
+- Public release documentation refreshed.
+
+Theme Lab 1.0.1-dev3h
+- Fixed desktop main-menu dropdowns rendering behind topic action buttons.
+
+RC6.1.21co - Sticky Preview Scroll-Container Authority
+- Fixes mini preview not following scroll from Gradient Studio onward.
+- Root cause: Gradient and later Studios place the sticky preview inside .windowbg.themelab_workspace_window; active/generated themes can assign overflow to .windowbg, turning it into a non-scrolling sticky container.
+- Theme Lab now explicitly owns workspace overflow/contain and sticky positioning.
+- Preserves RC6.1.21cn gradient and preview-state authority fixes.
+
+RC6.1.21cm - Membergroup Requests Structural GenericList Fix
+- Wraps group_request_list in an owned Theme Lab body during publish.
+- Connects the Membergroup Requests header, table, and action area without relying on fragile sibling selectors.
+
+RC6.1.21bk - Registration Header Separation
+- Restores a standalone rounded Registration Form title with a 12px gap before Required Information.
+- Keeps Required Information, Additional Information, and Verification as seamless title/body components.
+
+RC6.1.21bh - Dark Surface Completion + Board Row Polish
+- Joined Board Index rows into soft collections using Theme Lab border/radius values.
+- Removed stock Curve2 white gradients and bright square row boxes from .up_contain.
+- Added late dark-surface ownership for table_grid and Package Manager install/uninstall action rows.
+- Made Theme Lab Publish package preview and pipeline cards honor generated theme surface/text/border variables.
+
+RC6.1.21bh - Board Row Compile Target Fix
+- Corrected published Board Index row-color selectors to target SMF 2.1 `.up_contain` board rows.
+- Normal Board Row Background now compiles onto every real board row.
+- Alternate Row Background now compiles onto even board rows when Alternating Rows is On.
+- Preserves the Palette link-state and explicit alternate-row controls introduced in RC6.1.21be.
+
+RC6.1.21bh - Link State Colors + Alternate Board Rows
+- Added Palette controls for normal, hover, and visited content-link colors.
+- Added deterministic Palette link-state preview specimens and published :hover/:visited output.
+- Added explicit Alternate Row Background control to Board Index Studio.
+- Preview, persistence, and published board-index alternating rows now use the selected alternate color.
+
+RC6.1.21bd - Typography Monospace Live Preview Fix
+- Monospace selector now updates the specimen through a dedicated preview CSS variable.
+- Dropdown options provide their resolved font-family directly to the preview controller.
+
+RC6.1.21bd - Mini Preview Recovery + Typography Scope Fix
+- Restored the full shared mini-forum palette/component preview by removing a duplicate style attribute.
+- Moved heading-weight into the existing preview CSS-variable style block.
+- Kept Typography heading control narrowly scoped to font-weight only.
+- Carries forward the expanded monospace specimen and Theme Review cleanup.
+
+RC6.1.21bd - Typography Acceptance Fix + Review Cleanup
+
+- Typography preview heading weight now applies to semantic board/topic/form headings.
+- Normal (400), Medium (500), and Bold (700) are visibly distinct in the mini preview.
+- Monospace preview specimen expanded so font changes are easy to see.
+- Publish compiler defensively resolves monospace keys to CSS font-family stacks.
+- Removed obsolete duplicate Help / Terms / Go Up links from the footer preview.
+- Theme Review Footer and Publish navigation buttons now sit inside their respective cards.

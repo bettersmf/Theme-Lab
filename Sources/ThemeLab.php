@@ -1,0 +1,530 @@
+<?php
+
+/**
+ * Theme Lab
+ *
+ * Main source file and registry-driven admin controller.
+ *
+ * @package ThemeLab
+ * @version 1.0.2
+ */
+
+if (!defined('SMF'))
+	die('No direct access...');
+
+global $sourcedir;
+require_once($sourcedir . '/ThemeLabProjects.php');
+require_once($sourcedir . '/ThemeLabPalette.php');
+require_once($sourcedir . '/ThemeLabGradients.php');
+require_once($sourcedir . '/ThemeLabPalettes.php');
+require_once($sourcedir . '/ThemeLabColors.php');
+require_once($sourcedir . '/ThemeLabLayout.php');
+require_once($sourcedir . '/ThemeLabTypography.php');
+require_once($sourcedir . '/ThemeLabButtons.php');
+require_once($sourcedir . '/ThemeLabForms.php');
+require_once($sourcedir . '/ThemeLabNavigation.php');
+require_once($sourcedir . '/ThemeLabBoardIndex.php');
+require_once($sourcedir . '/ThemeLabHeader.php');
+require_once($sourcedir . '/ThemeLabFooter.php');
+require_once($sourcedir . '/ThemeLabPreview.php');
+require_once($sourcedir . '/ThemeLabReview.php');
+require_once($sourcedir . '/ThemeLabPublish.php');
+require_once($sourcedir . '/ThemeLabCore.php');
+
+/**
+ * Ensures the Theme Workspace labels are available during upgrades.
+ *
+ * SMF can retain an older ThemeLab language file when a package is upgraded
+ * in place.  The Workspace template must never depend on those new keys being
+ * present, so the controller supplies the English defaults as a compatibility
+ * layer.  A refreshed language file may override the same values normally.
+ */
+function themelab_ensure_workspace_language()
+{
+	global $txt;
+
+	$workspace_txt = array(
+		'themelab_project' => 'Workspace',
+		'themelab_workspace' => 'Theme Workspace',
+		'themelab_project_desc' => 'Create, open, and manage your Theme Lab workspace.',
+		'themelab_project_intro' => 'Theme Workspace keeps the design information Theme Lab uses to build and republish your theme.',
+		'themelab_project_details' => 'Workspace Details',
+		'themelab_workspace_intro' => 'Create, open, and manage your Theme Lab designs from one workspace.',
+		'themelab_workspace_intro_detail' => 'Internal project IDs remain unchanged for compatibility, but Theme Lab now presents the design lifecycle as a Workspace.',
+		'themelab_new_workspace' => 'New Workspace',
+		'themelab_new_workspace_ready' => 'A clean workspace is ready. Enter the theme details below and save when you are ready to begin designing.',
+		'themelab_current_workspace' => 'Current Workspace',
+		'themelab_saved_workspaces' => 'Saved Workspaces',
+		'themelab_workspace_active' => 'Active',
+		'themelab_open_workspace' => 'Open Workspace',
+		'themelab_continue_editing' => 'Continue Editing',
+		'themelab_delete_workspace' => 'Delete',
+		'themelab_confirm_delete_workspace' => 'Delete this saved workspace? This cannot be undone.',
+		'themelab_workspace_opened' => 'Workspace opened.',
+		'themelab_workspace_deleted' => 'Workspace deleted.',
+		'themelab_import_workspace' => 'Import Workspace',
+		'themelab_import_workspace_desc' => 'Import a native Theme Lab workspace JSON file or a Theme Lab theme ZIP that contains a workspace manifest.',
+		'themelab_import_workspace_help' => 'Themes published by Theme Lab 1.0.2 include themelab-workspace.json for lossless round-trip editing. Older Theme Lab-generated ZIPs can also be reconstructed when their generated CSS manifest is recognized. If a theme ZIP exceeds your server upload limit, extract themelab-workspace.json from the ZIP and import that JSON file directly.',
+		'themelab_workspace_imported' => 'Workspace imported and opened successfully.',
+		'themelab_import_failed' => 'Theme Lab could not import that workspace:',
+		'themelab_import_error_upload' => 'The workspace file could not be uploaded.',
+		'themelab_import_error_server_size' => 'The workspace file is larger than this server allows for PHP uploads. For a published theme ZIP, extract themelab-workspace.json from the ZIP and import that JSON file directly.',
+		'themelab_import_error_partial' => 'The workspace upload was interrupted before the entire file arrived. Please try the upload again.',
+		'themelab_import_error_no_file' => 'No workspace file reached Theme Lab. Choose a JSON or Theme Lab theme ZIP and try again.',
+		'themelab_import_error_no_tmp' => 'The server has no temporary upload directory available. Ask the server administrator to check the PHP upload configuration.',
+		'themelab_import_error_write' => 'The server could not write the uploaded workspace to its temporary directory.',
+		'themelab_import_error_extension' => 'A PHP extension stopped the workspace upload before Theme Lab could read it.',
+		'themelab_import_error_size' => 'The workspace file is too large. The maximum import size is 64 MB.',
+		'themelab_import_error_type' => 'Choose a Theme Lab .json workspace file or a Theme Lab generated .zip theme.',
+		'themelab_import_error_zip' => 'Theme Lab could not read the ZIP archive.',
+		'themelab_import_error_manifest' => 'This file is not recognized as a Theme Lab workspace or a theme generated by Theme Lab. Nothing was imported or changed.',
+		'themelab_import_error_invalid' => 'The workspace manifest is not valid JSON or is missing required Theme Lab data.',
+		'themelab_import_error_not_themelab' => 'This file was not created by Theme Lab. Theme Lab 1.0 can import Theme Lab workspaces and Theme Lab-generated theme ZIPs only. Nothing was imported or changed.',
+		'themelab_import_error_name' => 'The imported workspace does not contain a theme name.',
+		'themelab_import_error_save' => 'Theme Lab could not save the imported workspace.',
+		'themelab_import_error_legacy_css' => 'Theme Lab found generated CSS in the archive but could not reconstruct its saved design settings.',
+		'themelab_save_workspace' => 'Save Workspace',
+		'themelab_workspace_has_errors' => 'Please correct the following workspace problems:',
+	);
+
+	// Workspace terminology intentionally wins over an older installed language file.
+	foreach ($workspace_txt as $key => $value)
+		$txt[$key] = $value;
+}
+
+/**
+ * Load Theme Lab language with custom-theme translations first and the
+ * canonical default-theme English file as a missing-key fallback.
+ *
+ * This prevents stale Theme Lab-generated theme language copies from hiding
+ * new product strings while still allowing genuine custom translations to win.
+ */
+function themelab_load_language()
+{
+    global $txt, $settings, $user_info, $language;
+
+    loadLanguage('ThemeLab');
+
+    if (empty($settings['default_theme_dir']))
+        return;
+
+    $canonical_file = rtrim($settings['default_theme_dir'], '/\\') . '/languages/ThemeLab.english.php';
+
+    if (!is_file($canonical_file))
+        return;
+
+    $canonical = (static function ($file) {
+        $txt = array();
+        require $file;
+        return $txt;
+    })($canonical_file);
+
+    if (!is_array($canonical))
+        return;
+
+    $active_language = !empty($user_info['language']) ? $user_info['language'] : $language;
+    $active_language = strtolower((string) $active_language);
+
+    foreach ($canonical as $key => $value)
+    {
+        // Canonical Theme Lab English owns English UI strings outright. This
+        // prevents an older Theme Lab-generated/custom theme language file
+        // from keeping stale labels after a package upgrade. For non-English
+        // users, preserve the translated value and use canonical English only
+        // as a missing-key fallback.
+        if ($active_language === 'english' || !isset($txt[$key]))
+            $txt[$key] = $value;
+    }
+}
+
+/**
+ * Adds Theme Lab to the SMF admin menu.
+ */
+function themelab_admin_areas(&$admin_areas)
+{
+	global $txt, $context, $settings;
+
+	themelab_load_language();
+	themelab_ensure_workspace_language();
+
+	// 1.0.1-dev1: reuse the Theme Lab palette/paintbrush icon on both
+	// Configuration admin surfaces without depending on Theme Lab being open.
+	if (!empty($settings['default_theme_url']))
+	{
+		if (!isset($context['html_headers']))
+			$context['html_headers'] = '';
+
+		if (strpos($context['html_headers'], 'themelab_admin_icon_style') === false)
+		{
+			$icon = htmlspecialchars($settings['default_theme_url'] . '/images/ThemeLab/themelab_menu.png?tl=1.0.2', ENT_QUOTES, 'UTF-8');
+			$context['html_headers'] .= "\n<style id=\"themelab_admin_icon_style\">.main_icons.themelab_admin_icon{background:transparent url('" . $icon . "') center center/contain no-repeat!important}.main_icons.themelab_admin_icon::before{content:''!important;background:none!important}</style>";
+		}
+	}
+
+	$admin_areas['config']['areas']['themelab'] = array(
+		'label' => $txt['themelab_title'],
+		'file' => 'ThemeLab.php',
+		'function' => 'themelab_admin',
+		'icon' => 'theme_lab.png',
+		'permission' => array('admin_forum'),
+		'subsections' => themelab_get_admin_subsections(),
+	);
+}
+
+/**
+ * Theme Lab admin controller.
+ */
+function themelab_admin()
+{
+	global $context, $txt, $scripturl;
+
+	isAllowedTo('admin_forum');
+	themelab_load_language();
+	themelab_ensure_workspace_language();
+	loadTemplate('ThemeLab');
+	loadCSSFile('ThemeLab.css', array('minimize' => true), 'themelab');
+	loadJavaScriptFile('ThemeLabPreview.js', array('defer' => true, 'minimize' => true), 'themelab_preview');
+
+	$registry = themelab_get_studio_registry();
+	$sa = isset($_REQUEST['sa'], $registry[$_REQUEST['sa']]) ? $_REQUEST['sa'] : 'environment';
+
+	$context['page_title'] = $txt['themelab_title'] . ' - ' . $registry[$sa]['label'];
+	$context[$context['admin_menu_name']]['tab_data'] = array(
+		'title' => $txt['themelab_title'],
+		'description' => $txt['themelab_description'],
+		'tabs' => array_map(function ($studio) {
+			return array('description' => $studio['description']);
+		}, $registry),
+	);
+
+	themelab_dispatch_screen($sa);
+
+	$context['linktree'][] = array(
+		'name' => $txt['themelab_title'],
+		'url' => $scripturl . '?action=admin;area=themelab',
+	);
+}
+
+/**
+ * Runs Theme Lab environment checks.
+ */
+function themelab_environment_checks()
+{
+				global $boarddir, $sourcedir;
+
+				$themes_dir = $boarddir . '/Themes';
+				$curve2_dir = $themes_dir . '/default';
+
+				$checks = array();
+
+				$smf_version = defined('SMF_VERSION') ? SMF_VERSION : (isset($GLOBALS['forum_version']) ?
+								$GLOBALS['forum_version'] : 'Unknown');
+
+				// SMF may report as "2.1.7" instead of "SMF 2.1.7".
+				$clean_smf_version = str_replace('SMF ', '', $smf_version);
+
+				$checks[] = array(
+								'label' => 'SMF 2.1.x',
+								'status' => $clean_smf_version !== 'Unknown' && version_compare($clean_smf_version,
+												'2.1', '>=') && version_compare($clean_smf_version, '2.2', '<'),
+								'details' => $smf_version,
+								'help' => 'Theme Lab is designed for SMF 2.1.x.',
+								'fix' => 'Install Theme Lab on an SMF 2.1.x forum.',
+								);
+
+				$checks[] = array(
+								'label' => 'PHP Version',
+								'status' => version_compare(PHP_VERSION, '7.0.0', '>='),
+								'details' => PHP_VERSION,
+								'help' => 'Theme Lab requires PHP 7.0 or newer.',
+								'fix' => 'Upgrade PHP to version 7.0 or newer.',
+								);
+
+				$checks[] = array(
+								'label' => 'Theme Lab Source File',
+								'status' => file_exists($sourcedir . '/ThemeLab.php'),
+								'details' => $sourcedir . '/ThemeLab.php',
+								'help' => 'Confirms the main Theme Lab source file was installed.',
+								'fix' => 'Reinstall the Theme Lab package.',
+								);
+
+				$checks[] = array(
+								'label' => 'Themes Directory Exists',
+								'status' => is_dir($themes_dir),
+								'details' => $themes_dir,
+								'help' => 'Theme Lab needs the SMF Themes directory.',
+								'fix' => 'Verify your SMF installation has a valid Themes directory.',
+								);
+
+				$checks[] = array(
+								'label' => 'Themes Directory Writable',
+								'status' => is_writable($themes_dir),
+								'details' => $themes_dir,
+								'help' => 'Theme Lab must be able to create a new folder inside Themes.',
+								'fix' => 'Make the Themes directory writable by PHP. Usually this means 755 or 775 depending on your host.',
+								);
+
+				$checks[] = array(
+								'label' => 'Themes Directory Write Test',
+								'status' => themelab_test_directory_write($themes_dir),
+								'details' => $themes_dir,
+								'help' => 'This verifies PHP can actually create and delete a temporary file in the Themes directory.',
+								'fix' => 'Check ownership and permissions for the Themes directory.',
+								);
+
+				$checks[] = array(
+								'label' => 'Curve2 Theme Found',
+								'status' => is_dir($curve2_dir) && file_exists($curve2_dir .
+												'/index.template.php'),
+								'details' => $curve2_dir,
+								'help' => 'Theme Lab uses Curve2 as the base theme for generated themes.',
+								'fix' => 'Restore the default SMF theme folder at Themes/default.',
+								);
+
+				$checks[] = array(
+								'label' => 'GD Extension',
+								'status' => extension_loaded('gd'),
+								'optional' => true,
+								'details' => extension_loaded('gd') ? 'Available - image normalization enabled' : 'Not available - original validated images will be preserved',
+								'help' => 'Optional. GD lets Theme Lab normalize oversized uploaded logos; publishing still works without it.',
+								'fix' => 'Optional: enable the PHP GD extension if you want automatic logo resizing.',
+								);
+
+				$passed = 0;
+				$total = 0;
+
+				foreach ($checks as $check)
+				{
+								if (!empty($check['optional']))
+												continue;
+
+								$total++;
+
+								if (!empty($check['status']))
+												$passed++;
+				}
+
+				return array(
+								'ready' => $passed === $total,
+								'passed' => $passed,
+								'total' => $total,
+								'items' => $checks,
+								);
+}
+
+/**
+ * Tests whether Theme Lab can create and remove a temporary file.
+ */
+function themelab_test_directory_write($dir)
+{
+				if (!is_dir($dir) || !is_writable($dir))
+								return false;
+
+				$test_file = $dir . '/themelab_write_test_' . mt_rand(1000, 9999) . '.tmp';
+
+				$result = @file_put_contents($test_file, 'Theme Lab write test');
+
+				if ($result === false)
+								return false;
+
+				return @unlink($test_file);
+}
+
+/**
+ * Returns the saved Theme Lab project draft.
+ */
+function themelab_get_project()
+{
+				global $modSettings;
+
+				$defaults = array(
+								'theme_name' => '',
+								'theme_author' => '',
+								'theme_version' => '1.0',
+								'base_theme' => 'default',
+								'theme_description' => '',
+								'last_saved' => 0,
+								);
+
+				if (empty($modSettings['themelab_project']))
+								return $defaults;
+
+				$project = json_decode($modSettings['themelab_project'], true);
+
+				if (!is_array($project))
+								return $defaults;
+
+				return array_merge($defaults, $project);
+}
+
+/**
+ * Saves the Theme Lab project draft.
+ */
+function themelab_handle_project_save()
+{
+				if (empty($_POST['themelab_save_project']))
+								return;
+
+				checkSession();
+
+				$project = array(
+								'theme_name' => isset($_POST['themelab_theme_name']) ? themelab_clean_text($_POST['themelab_theme_name']) :
+												'',
+								'theme_author' => isset($_POST['themelab_theme_author']) ? themelab_clean_text($_POST['themelab_theme_author']) :
+												'',
+								'theme_version' => isset($_POST['themelab_theme_version']) ? themelab_clean_text
+												($_POST['themelab_theme_version']) : '1.0',
+								'base_theme' => isset($_POST['themelab_base_theme']) && $_POST['themelab_base_theme']
+												=== 'default' ? 'default' : 'default',
+								'theme_description' => isset($_POST['themelab_theme_description']) ?
+												themelab_clean_text($_POST['themelab_theme_description']) : '',
+								'last_saved' => time(),
+								);
+
+				updateSettings(array('themelab_project' => json_encode($project), ));
+
+				redirectexit('action=admin;area=themelab;sa=project;saved');
+}
+/**
+ * Basic text cleanup for saved project fields.
+ */
+function themelab_clean_text($value)
+{
+	$value = trim((string) $value);
+	$value = str_replace(array("\r\n", "\r"), "\n", $value);
+
+	return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
+}
+/**
+ * Determine whether a project can continue to Palette Studio.
+ */
+function themelab_project_is_ready($project)
+{
+	return !empty($project['project_name'])
+		&& !empty($project['author'])
+		&& !empty($project['theme_version'])
+		&& !empty($project['base_theme']);
+}
+
+/**
+ * Loads all Theme Lab projects.
+ */
+function themelab_load_projects()
+{
+				global $context;
+
+				$context['themelab_projects'] = themelab_get_projects();
+}
+
+/**
+ * Handle Theme Workspace actions.
+ */
+function themelab_handle_project_actions()
+{
+	global $context;
+
+	// Start a clean workspace without deleting any saved workspace.
+	if (isset($_GET['new']))
+	{
+		checkSession('get');
+		themelab_clear_active_project();
+		redirectexit('action=admin;area=themelab;sa=project;new_workspace');
+	}
+
+	// Import a native Theme Lab workspace JSON file or a Theme Lab published theme ZIP.
+	if (!empty($_POST['themelab_import_workspace']))
+	{
+		checkSession();
+		$error = '';
+		$id_project = themelab_import_workspace_upload(
+			isset($_FILES['themelab_workspace_file']) ? $_FILES['themelab_workspace_file'] : array(),
+			$error
+		);
+
+		if (empty($id_project))
+		{
+			$context['themelab_import_errors'][] = $error !== '' ? $error : 'themelab_import_error_invalid';
+			return;
+		}
+
+		redirectexit('action=admin;area=themelab;sa=project;imported');
+	}
+
+	// Create or update a workspace. Internal project identifiers remain for compatibility.
+if (!empty($_POST['themelab_save_project']))
+{
+
+	checkSession();
+
+	$data = array(
+		'project_name' => isset($_POST['themelab_theme_name'])
+			? themelab_clean_text($_POST['themelab_theme_name'])
+			: '',
+		'author' => isset($_POST['themelab_theme_author'])
+			? themelab_clean_text($_POST['themelab_theme_author'])
+			: '',
+		'theme_version' => isset($_POST['themelab_theme_version'])
+			? themelab_clean_text($_POST['themelab_theme_version'])
+			: '',
+		'base_theme' => 'default',
+		'description' => isset($_POST['themelab_theme_description'])
+			? themelab_clean_text($_POST['themelab_theme_description'])
+			: '',
+	);
+
+	$context['themelab_submitted_project'] = $data;
+
+	if ($data['project_name'] === '')
+		$context['themelab_project_errors'][] = 'themelab_error_theme_name';
+
+	if ($data['author'] === '')
+		$context['themelab_project_errors'][] = 'themelab_error_author';
+
+	if ($data['theme_version'] === '')
+		$context['themelab_project_errors'][] = 'themelab_error_version';
+
+	if (!empty($context['themelab_project_errors']))
+		return;
+
+	$id_project = !empty($_POST['id_project'])
+		? (int) $_POST['id_project']
+		: 0;
+
+	if ($id_project > 0 && themelab_get_project_by_id($id_project))
+	{
+		themelab_update_project($id_project, $data);
+		themelab_set_active_project($id_project);
+	}
+	else
+	{
+		$id_project = themelab_create_project($data);
+	}
+
+	redirectexit('action=admin;area=themelab;sa=palette');
+}
+
+				// Open an existing project.
+				if (!empty($_GET['open']))
+				{
+								checkSession('get');
+
+								$id_project = (int)$_GET['open'];
+
+								if (themelab_set_active_project($id_project))
+												redirectexit('action=admin;area=themelab;sa=project;opened');
+
+								redirectexit('action=admin;area=themelab;sa=project');
+				}
+
+				// Delete an existing project.
+				if (!empty($_POST['themelab_delete_project']))
+				{
+								checkSession();
+
+								$id_project = !empty($_POST['id_project']) ? (int)$_POST['id_project'] : 0;
+
+								themelab_delete_project($id_project);
+
+								redirectexit('action=admin;area=themelab;sa=project;deleted');
+				}
+}
